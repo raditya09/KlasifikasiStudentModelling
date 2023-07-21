@@ -1,9 +1,9 @@
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar"> 
+  <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-item align-items-center" >
-        <a class="nav-link nav-profile">
-          <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+      <li>
+        <a class="nav-link nav-profile d-flex align-items-center pe-0">
+        <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
         </a><!-- End Profile Iamge Icon -->
         <!-- <h6> {{ Auth::user()->name }}</h6> -->
         <h6>Raditya Arief Pratama</h6>
@@ -37,6 +37,9 @@
                   <i class="bi bi-box-arrow-in-right"></i>
                   {{ __('Logout') }}
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf
+    </form>
       </li><!-- End Logout Page Nav -->
 
     </ul>
