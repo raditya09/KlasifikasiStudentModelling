@@ -26,6 +26,9 @@ Route::group(['namespace'=>'Backend'], function()
     {
             Route::resource('dashboard', 'DashboardController');
     });
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['namespace'=>'AdminBackend'], function()
+    {
+            Route::resource('admin', 'AdminDashboardController');
+    });
+Auth::routes();
