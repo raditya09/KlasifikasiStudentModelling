@@ -2,15 +2,15 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li>
-        <a class="nav-link nav-profile d-flex align-items-center pe-0">
+        <a class="card-body profile-card pt-4 d-flex flex-column align-items-center">
         <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
         </a><!-- End Profile Iamge Icon -->
         <!-- <h6> {{ Auth::user()->name }}</h6> -->
-        <h6>Raditya Arief Pratama</h6>
-        <span>Teknik Informatika</span>
+        <h6 class="d-flex flex-column align-items-center">Raditya Arief Pratama</h6>
+        <span class="d-flex flex-column align-items-center">Teknik Informatika</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -24,7 +24,7 @@
       </li><!-- End Kuesioner Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ asset('backend/user-profile.html')}}">
+        <a class="nav-link collapsed" href="/profile">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>

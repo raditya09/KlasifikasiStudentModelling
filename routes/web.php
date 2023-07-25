@@ -30,6 +30,7 @@ Route::group(['namespace'=>'Frontend'], function()
         Route::group(['namespace'=>'Backend'], function()
         {
                 Route::resource('dashboard', 'DashboardController');
+                Route::resource('profile', 'ProfileController');
         });
     });
     
