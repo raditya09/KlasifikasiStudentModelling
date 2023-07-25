@@ -22,13 +22,24 @@ Route::group(['namespace'=>'Frontend'], function()
             Route::resource('/', 'HomeController');
     });
 
-Route::group(['namespace'=>'Backend'], function()
-    {
-            Route::resource('dashboard', 'DashboardController');
-    });
 
-Route::group(['namespace'=>'AdminBackend'], function()
-    {
-            Route::resource('admin', 'AdminDashboardController');
+
+    Route::middleware(['class:3'])->group(function () {
+        // Definisikan rute untuk mahasiswa di sini, misalnya dashboard.
+        // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::group(['namespace'=>'Backend'], function()
+        {
+                Route::resource('dashboard', 'DashboardController');
+        });
+    });
+    
+    Route::middleware(['class:1,2'])->group(function () {
+        // Definisikan rute untuk dosen di sini, misalnya halaman admin.
+        // Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+        Route::group(['namespace'=>'AdminBackend'], function()
+        {
+                Route::resource('admin', 'AdminDashboardController');
+        });
+
     });
 Auth::routes();
