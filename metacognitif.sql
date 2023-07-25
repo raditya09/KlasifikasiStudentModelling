@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2023 at 04:46 AM
+-- Generation Time: Jul 25, 2023 at 05:31 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -178,7 +178,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `semester`, `angkatan`, `email`, `email_verified_at`, `password`, `foto`, `kelas_user`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Raditya Arief Pratama', 'E4212423', 5, 2021, 'radityaariefp@polije.ac.id', NULL, '$2y$10$BiKA1.FSwf5dasvCOFJT1.xk7xcBeo8/e3xnVJvMN5vB/sMtciTPG', NULL, '3', 'chK9pr44gKrywMQPZDRtyvXy4Do2OjCY5Rt7spJuDR2zZsDTit8CQg4f5CEd', '2023-07-20 13:13:22', '2023-07-20 13:13:22');
+(1, 'Raditya Arief Pratama', 'E4212423', 5, 2021, 'radityaariefp@polije.ac.id', NULL, '$2y$10$BiKA1.FSwf5dasvCOFJT1.xk7xcBeo8/e3xnVJvMN5vB/sMtciTPG', NULL, '3', 'bEGTqS4Lty0MHFaKPHVBNXZkOf3dol6ONa9WlbOc3uUCVaIBAkI4K9ShFoVe', '2023-07-20 13:13:22', '2023-07-20 13:13:22'),
+(2, 'Admin', 'E4213214', 5, 2021, 'tifnganjuk@polije.ac.id', NULL, '$2y$10$bQ5ApEyhZ.bVSVy3oH1cv.DB/aijWrkinTGN4AEj7LBoWdb8e2/L.', NULL, '1', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -281,7 +282,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
