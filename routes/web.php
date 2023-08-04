@@ -40,6 +40,7 @@ Route::group(['namespace'=>'Frontend'], function()
         Route::group(['namespace'=>'AdminBackend'], function()
         {
                 Route::resource('admin', 'AdminDashboardController');
+                Route::resource('listuser', 'ListUserController');
         });
 
     });

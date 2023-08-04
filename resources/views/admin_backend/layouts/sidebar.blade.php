@@ -27,7 +27,7 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ asset('admin_backend/user-profile.html')}}">
+        <a class="nav-link collapsed" href="/listuser">
           <i class="bi bi-person"></i>
           <span>List User</span>
         </a>
