@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 05:31 AM
+-- Generation Time: Aug 25, 2023 at 04:14 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `metacognitif`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelas_user` enum('1','2','3') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -112,7 +131,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (12, '2023_07_20_193208_create_hasil', 1),
 (13, '2023_07_20_193230_create_kuesioner', 1),
-(14, '2023_07_20_193244_create_agent', 1);
+(14, '2023_07_20_193244_create_agent', 1),
+(15, '2023_08_18_132019_create_admin', 2);
 
 -- --------------------------------------------------------
 
@@ -178,12 +198,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama_lengkap`, `nim`, `semester`, `angkatan`, `email`, `email_verified_at`, `password`, `foto`, `kelas_user`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Raditya Arief Pratama', 'E4212423', 5, 2021, 'radityaariefp@polije.ac.id', NULL, '$2y$10$BiKA1.FSwf5dasvCOFJT1.xk7xcBeo8/e3xnVJvMN5vB/sMtciTPG', NULL, '3', 'bEGTqS4Lty0MHFaKPHVBNXZkOf3dol6ONa9WlbOc3uUCVaIBAkI4K9ShFoVe', '2023-07-20 13:13:22', '2023-07-20 13:13:22'),
+(1, 'Raditya Arief Pratama', 'E4212423', 5, 2021, 'radityaariefp@polije.ac.id', NULL, '$2y$10$BiKA1.FSwf5dasvCOFJT1.xk7xcBeo8/e3xnVJvMN5vB/sMtciTPG', NULL, '3', 'TrWqo6l5DZ7wwcM1Hu0LBxmE9L8wU1eERg63Su40TsNGGY0zs0NoBTrPA2g5', '2023-07-20 13:13:22', '2023-07-20 13:13:22'),
 (2, 'Admin', 'E4213214', 5, 2021, 'tifnganjuk@polije.ac.id', NULL, '$2y$10$bQ5ApEyhZ.bVSVy3oH1cv.DB/aijWrkinTGN4AEj7LBoWdb8e2/L.', NULL, '1', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admin_nama_lengkap_unique` (`nama_lengkap`),
+  ADD UNIQUE KEY `admin_email_unique` (`email`);
 
 --
 -- Indexes for table `agent`
@@ -243,6 +271,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `agent`
 --
 ALTER TABLE `agent`
@@ -270,7 +304,7 @@ ALTER TABLE `kuesioner`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
