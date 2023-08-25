@@ -28,6 +28,10 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('admin_backend/assets/css/style.css')}}" rel="stylesheet">
+<!-- 
+  Include SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -46,7 +50,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
         <img src="{{ asset('admin_backend/assets/img/logo.png')}}" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">{{config('app.name')}}</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

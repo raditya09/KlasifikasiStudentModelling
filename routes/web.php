@@ -41,6 +41,8 @@ Route::group(['namespace'=>'Frontend'], function()
         {
                 Route::resource('admin', 'AdminDashboardController');
                 Route::resource('listuser', 'ListUserController');
+                Route::resource('listadmin', 'ListAdminController');
+                // Route::post('listuser', [UserController::class, 'store']);
         });
 
     });

@@ -50,6 +50,10 @@ section {
   padding-bottom: 40px;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 .section-header h2 {
   font-size: 13px;
   letter-spacing: 1px;

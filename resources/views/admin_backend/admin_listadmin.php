@@ -9,15 +9,15 @@
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin">Home</a></li>
         <li class="breadcrumb-item">User</li>
-        <li class="breadcrumb-item active">List User</li>
+        <li class="breadcrumb-item active">List Admin</li>
         </ol>
     </nav>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
     <div class="row">
-        <h3>List User</h3>
-        <!-- <button id="addUserButton">Tambah User</button>
+        <h3>List Admin</h3>
+        <button id="addUserButton">Tambah Admin</button>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
         <script>
             // Script untuk menampilkan kotak dialog ketika tombol diklik
@@ -64,7 +64,7 @@
                     }
                 });
             });
-        </script> -->
+        </script>
 
         <table>
             <thead>

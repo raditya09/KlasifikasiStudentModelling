@@ -27,11 +27,23 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/listuser">
+        <a class="nav-link collapsed">
           <i class="bi bi-person"></i>
-          <span>List User</span>
+          <span>User</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/listuser">
+              <i class="bi bi-person"></i>
+              <span>List User</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/listadmin">
+              <i class="bi bi-person"></i>
+              <span>List Admin</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
+</li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('logout') }}"

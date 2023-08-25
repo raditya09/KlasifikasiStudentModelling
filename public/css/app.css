@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 /*!
  * Bootstrap  v5.3.0 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -11979,4 +11979,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+  .background {
+    background-image: "{{asset('backend/assets/img/background.jpg')}}";
+  }
+ 
 }
