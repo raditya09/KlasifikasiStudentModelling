@@ -16,7 +16,7 @@ class ListAdminController extends Controller
      public function index()
      {
          $users = User::all()->where('kelas_user', '1');
-         return view('admin_backend.admin_listuser', compact('users'));
+         return view('admin_backend.admin_listadmin', compact('users'));
      }
      // /**
      //  * Get a validator for an incoming registration request.

@@ -17,7 +17,7 @@
     <section class="section dashboard">
     <div class="row">
         <h3>List Admin</h3>
-        <button id="addUserButton">Tambah Admin</button>
+        <button class="col-md-2" id="addUserButton">Tambah Admin</button>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
         <script>
             // Script untuk menampilkan kotak dialog ketika tombol diklik
@@ -26,17 +26,13 @@
                     title: 'Tambah Admin Baru',
                     html:
                         '<input id="nama_lengkap" class="swal2-input" placeholder="Nama Lengkap">' +
-                        '<input id="nim" class="swal2-input" placeholder="NIM">' +
-                        '<input id="semester" class="swal2-input" placeholder="Semester">' +
-                        '<input id="angkatan" class="swal2-input" placeholder="Angkatan">' +
+                        '<input id="nip" class="swal2-input" placeholder="NIM">' +
                         '<input id="email" class="swal2-input" placeholder="Email">'+
                         '<input id="password" class="swal2-input" placeholder="Password">',
                     focusConfirm: false,
                     preConfirm: () => {
                         const nama_lengkap = Swal.getPopup().querySelector('#nama_lengkap').value;
-                        const nim = Swal.getPopup().querySelector('#nim').value;
-                        const semester = Swal.getPopup().querySelector('#semester').value;
-                        const angkatan = Swal.getPopup().querySelector('#angkatan').value;
+                        const nip = Swal.getPopup().querySelector('#nim').value;
                         const email = Swal.getPopup().querySelector('#email').value;
                         const password = Swal.getPopup().querySelector('#password').value;
                         return { nama_lengkap: nama_lengkap, nim:nim, semester:semester, angkatan:angkatan, email: email, password:password };
@@ -45,13 +41,12 @@
                     if (result.isConfirmed && result.value.nama_lengkap && result.value.nim && result.value.semester && result.value.angkatan && result.value.email && result.value.password) {
                         // Kirim data user ke server menggunakan AJAX atau formulir biasa
                         // Contoh: Anda dapat menggunakan Axios untuk AJAX
-                        axios.post('/listuser', {
-                            nanama_lengkapme: result.value.nama_lengkap,
-                            nim: result.value.nim,
-                            semester: result.value.semester,
-                            angkatan: result.value.angkatan,
+                        axios.post('/listadmin', {
+                            nama_lengkap: result.value.nama_lengkap,
+                            nip: result.value.nim,
                             email: result.value.email,
                             password: result.value.password,
+                            kelas_user: '2',
                             _token: '{{ csrf_token() }}'
                         })
                         .then(() => {
