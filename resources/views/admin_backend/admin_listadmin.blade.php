@@ -26,7 +26,7 @@
                     title: 'Tambah Admin Baru',
                     html:
                         '<input id="nama_lengkap" class="swal2-input" placeholder="Nama Lengkap">' +
-                        '<input id="nip" class="swal2-input" placeholder="NIM">' +
+                        '<input id="nip" class="swal2-input" placeholder="NIP">' +
                         '<input id="email" class="swal2-input" placeholder="Email">'+
                         '<input id="password" class="swal2-input" placeholder="Password">',
                     focusConfirm: false,
