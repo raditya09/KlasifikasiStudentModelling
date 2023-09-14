@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 square-size">
             <div class="card">
                 <!-- <div class="card-header">{{ __('Register') }}</div> -->
                 
@@ -134,7 +134,7 @@
             </div>
         </div>
         <!-- Right side columns -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 bg-image">
             <div class="card-body">
                 <h5 class="card-title">Recent Activity <span>| Today</span></h5>
 
