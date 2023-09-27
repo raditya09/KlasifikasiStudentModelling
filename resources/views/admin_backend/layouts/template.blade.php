@@ -163,6 +163,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="{{ asset('js/jquery.js')}}"></script>
   <script src="{{ asset('admin_backend/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{ asset('admin_backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{ asset('admin_backend/assets/vendor/chart.js/chart.umd.js')}}"></script>
@@ -172,8 +173,33 @@
   <script src="{{ asset('admin_backend/assets/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{ asset('admin_backend/assets/vendor/php-email-form/validate.js')}}"></script>
 
+
   <!-- Template Main JS File -->
   <script src="{{ asset('admin_backend/assets/js/main.js')}}"></script>
+  <script src="{{ asset('css/sweealert2.all.min.js')}}"></script>
+
+  @yield('script')
+
+  @if (session('success'))
+    <script>
+      const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: '{{ session('success') }}'
+      });
+    </script>
+  @endif
 
 </body>
 

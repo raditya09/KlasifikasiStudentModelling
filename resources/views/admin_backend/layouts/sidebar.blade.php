@@ -13,7 +13,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ asset('admin_backend/user-profile.html')}}">
+        <a class="nav-link collapsed" href="{{ route('adminQuestionnaire.index')}}">
           <i class="bi bi-pencil"></i>
           <span>Kuesioner</span>
         </a>

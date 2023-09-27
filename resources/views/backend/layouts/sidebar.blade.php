@@ -17,7 +17,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ asset('backend/user-profile.html')}}">
+        <a class="nav-link collapsed" href="{{ route('user.instruction')}}">
           <i class="bi bi-pencil"></i>
           <span>Kuesioner</span>
         </a>
