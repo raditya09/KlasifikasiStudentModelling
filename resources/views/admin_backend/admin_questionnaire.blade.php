@@ -15,7 +15,7 @@
             {{--! end header  --}}
 
             {{--! start table  --}}
-            <div class="my-3">
+            <div class="my-3 table-responsive">
                 <table class="table">
                     <thead class="table-light">
                         <th class="text-secondary col-1 col-md-1">NOMOR</th>
@@ -61,14 +61,14 @@
                                 <div class="mb-3">
                                     <label for="create-kategori" class="col-form-label">Kategori soal:</label>
                                     <select class="form-select" name="create_kategori" id="create-kategori">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
+                                        <option value="1">1. Declarative knowledge</option>
+                                        <option value="2">2. Procedural knowledge</option>
+                                        <option value="3">3. Conditional knowledge</option>
+                                        <option value="4">4. Planning</option>
+                                        <option value="5">5. Information Management</option>
+                                        <option value="6">6. Monitoring</option>
+                                        <option value="7">7. Debugging</option>
+                                        <option value="8">8. Evaluation</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -104,14 +104,14 @@
                                 <div class="mb-3">
                                     <label for="edit-kategori" class="col-form-label">Kategori soal:</label>
                                     <select class="form-select" name="edit_kategori" id="edit-kategori">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
+                                        <option value="1">1. Declarative knowledge</option>
+                                        <option value="2">2. Procedural knowledge</option>
+                                        <option value="3">3. Conditional knowledge</option>
+                                        <option value="4">4. Planning</option>
+                                        <option value="5">5. Information Management</option>
+                                        <option value="6">6. Monitoring</option>
+                                        <option value="7">7. Debugging</option>
+                                        <option value="8">8. Evaluation</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -149,13 +149,14 @@
         $('.delete-form').click(function(event){
             event.preventDefault();
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Yakin untuk dihapus?',
+                text: "Kamu tidak akan bisa mengembalikan ini!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#dc3545',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Yes, delete it!',
+                confirmButtonText: 'Ya, hapus ini!',
+                cancelButtonText: 'Batalkan',
                 reverseButtons: true
                 }).then((result) => {
                 if (result.isConfirmed) {

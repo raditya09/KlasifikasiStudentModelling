@@ -1,5 +1,8 @@
 <?php
 
+// use App\Http\Controllers\AdminBackend\SelectPeriodController;
+
+use App\Http\Controllers\AdminBackend\SelectPeriodController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +35,13 @@ Route::middleware(['class:3'])->group(function () {
         Route::resource('profile', 'ProfileController');
         Route::resource('questionnaire', 'QuestionnaireController')->names('userQuestionnaire');
 
+        // hanya tampilan
         Route::get('instruction', function () {
             return view('backend.questionnaire_instructions');
         })->name('user.instruction');
+        Route::get('check-questionnaire', function () {
+            return view('backend.not_filled_questionnaire');
+        })->name('user.checkFilled');
     });
 });
 
@@ -46,6 +53,10 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::resource('listuser', 'ListUserController')->names('adminListUser');
         Route::resource('listadmin', 'ListAdminController')->names('adminListAdmin');
         Route::resource('admin-questionnaire', 'AdminQuestionnaireController')->names('adminQuestionnaire');
+        Route::resource('admin-result', 'AdminResultController')->names('adminResult');
+        Route::resource('admin-period', 'AdminPeriodController')->names('adminPeriod');
+
+        Route::post('/select-period', [SelectPeriodController::class, 'update'])->name('adminSelectPeriod');
         // Route::post('listuser', [UserController::class, 'store']);
     });
 });

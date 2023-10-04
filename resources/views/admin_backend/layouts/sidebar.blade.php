@@ -20,9 +20,16 @@
       </li><!-- End Kuesioner Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ asset('admin_backend/user-profile.html')}}">
+        <a class="nav-link collapsed" href="{{ route('adminResult.index')}}">
           <i class="bi bi-book"></i>
           <span>Hasil</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('adminPeriod.index')}}">
+          <i class="bi bi-calendar4"></i>
+          <span>Periode</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

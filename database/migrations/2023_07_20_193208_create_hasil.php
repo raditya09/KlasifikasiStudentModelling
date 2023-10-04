@@ -14,8 +14,9 @@ class CreateHasil extends Migration
     public function up()
     {
         Schema::create('hasil', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id', true);
             $table->integer('id_user');
+            $table->integer('id_periode');
             $table->integer('declarative_knowledge');
             $table->integer('procedural_knowledge');
             $table->integer('conditional_knowledge');

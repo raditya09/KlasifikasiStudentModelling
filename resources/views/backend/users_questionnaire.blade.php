@@ -12,36 +12,43 @@
         </div>
 
         {{--! start fill  --}}
-        <form action="" class="needs-validation" novalidate>
-            <div class="bg-light rounded p-3 mt-3">
-                <div class="d-flex flex-row">
-                    <p class="me-1">1.</p>
-                    <div>
-                    <p>Saya bertanya kepada diri sendiri, ”Apakah saya sudah mencapai tujuan saya?”, ketika sedang berupaya mencapai tujuan secara intensif.</p>
+        
+        <form action="{{ route('userQuestionnaire.store') }}" method="POST" class="needs-validation" novalidate>
+            @csrf
+            @foreach ($kuesioners as $index => $kuesioner)
+                <div class="mb-3 visually-hidden">
+                    <input type="text" class="form-control" name="id[]" value="{{ $kuesioner->id }}">
+                    <input type="text" class="form-control" name="kategori[]" value="{{ $kuesioner->kategori_soal }}">
+                </div>              
+                <div class="bg-light rounded p-3 mt-3">
+                    <div class="d-flex flex-row">
+                        <p class="me-1">{{ $index + 1 }}.</p>
+                        <div class="w-100">
+                            <p>{{ $kuesioner->soal }}</p>
 
-                        <input type="radio" class="form-check-input" id="flexRadio1" name="optionsGroup" required>
-                        <label class="form-check-label pe-1 pe-sm-5 ps-1" for="flexRadio1">1</label>
-    
-                        <input type="radio" class="form-check-input" id="flexRadio2" name="optionsGroup">
-                        <label class="form-check-label pe-1 pe-sm-5 ps-1" for="flexRadio2">2</label>
-    
-                        <input type="radio" class="form-check-input" id="flexRadio3" name="optionsGroup">
-                        <label class="form-check-label pe-1 pe-sm-5 ps-1" for="flexRadio3">3</label>
-    
-                        <input type="radio" class="form-check-input" id="flexRadio4" name="optionsGroup">
-                        <label class="form-check-label pe-1 pe-sm-5 ps-1" for="flexRadio4">4</label>
-    
-                        <input type="radio" class="form-check-input" id="flexRadio5" name="optionsGroup">
-                        <label class="form-check-label pe-1 pe-sm-5 ps-1" for="flexRadio5">5</label>
-    
-                        <div class="invalid-feedback mt-3 text-end">
-                            <i class="bi bi-exclamation-circle-fill"></i> Pertanyaan belum dijawab!
+                            <input value="0" type="radio" class="form-check-input" id="radio0{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}" required>
+                            <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio0{{ $kuesioner->id }}">0</label>
+        
+                            <input value="1" type="radio" class="form-check-input" id="radio1{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
+                            <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio1{{ $kuesioner->id }}">1</label>
+        
+                            <input value="2" type="radio" class="form-check-input" id="radio2{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
+                            <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio2{{ $kuesioner->id }}">2</label>
+        
+                            <input value="3" type="radio" class="form-check-input" id="radio3{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
+                            <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio3{{ $kuesioner->id }}">3</label>
+        
+                            <input value="4" type="radio" class="form-check-input" id="radio4{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
+                            <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio4{{ $kuesioner->id }}">4</label>
+        
+                            <div class="invalid-feedback mt-3 text-end w-100">
+                                <i class="bi bi-exclamation-circle-fill"></i> Pertanyaan belum dijawab!
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-                
-
-            </div>
+            @endforeach
             <div class="pt-5">
                 <button type="submit" class="btn btn-primary px-5">Submit</button>
             </div>

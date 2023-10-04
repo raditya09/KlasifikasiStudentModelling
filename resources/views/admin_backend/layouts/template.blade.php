@@ -29,9 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('admin_backend/assets/css/style.css')}}" rel="stylesheet">
 <!-- 
-  Include SweetAlert2 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
-
+ 
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -201,6 +199,26 @@
     </script>
   @endif
 
+  @if (session('error'))
+    <script>
+      const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+
+        Toast.fire({
+          icon: 'error',
+          title: '{{ session('error') }}'
+      });
+    </script>
+  @endif
 </body>
 
 </html>
