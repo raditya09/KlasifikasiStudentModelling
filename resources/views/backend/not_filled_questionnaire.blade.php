@@ -8,7 +8,7 @@
             
         
             <div class="mt-4 mb-1 text-center">
-                <a href="{{ route('user.instruction') }}" class="btn btn-primary">Mulai Isi Kuesioner <i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('user.questionnaire.instruction') }}" class="btn btn-primary">Mulai Isi Kuesioner <i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
      </main>

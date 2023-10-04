@@ -36,12 +36,9 @@ Route::middleware(['class:3'])->group(function () {
         Route::resource('questionnaire', 'QuestionnaireController')->names('userQuestionnaire');
 
         // hanya tampilan
-        Route::get('instruction', function () {
-            return view('backend.questionnaire_instructions');
-        })->name('user.instruction');
-        Route::get('check-questionnaire', function () {
-            return view('backend.not_filled_questionnaire');
-        })->name('user.checkFilled');
+        Route::get('instruction', 'UiController@instruction')->name('user.questionnaire.instruction');
+        Route::get('check-questionnaire', 'UiController@checkQuestionnaire')->name('user.questionnaire.check');
+        Route::get('closed-questionnaire', 'UiController@closedQuestionnaire')->name('user.questionnaire.closed');
     });
 });
 
@@ -56,8 +53,8 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::resource('admin-result', 'AdminResultController')->names('adminResult');
         Route::resource('admin-period', 'AdminPeriodController')->names('adminPeriod');
 
-        Route::post('/select-period', [SelectPeriodController::class, 'update'])->name('adminSelectPeriod');
-        Route::post('/select-period/active', [SelectPeriodController::class, 'active'])->name('adminSelectPeriod.active');
+        Route::post('/select-period', 'SelectPeriodController@update')->name('adminSelectPeriod');
+        Route::post('/select-period/active', 'SelectPeriodController@active')->name('adminSelectPeriod.active');
 
         // Route::post('listuser', [UserController::class, 'store']);
     });

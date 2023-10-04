@@ -6,12 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\Hasil;
 use App\Models\Kuesioner;
 use App\Models\Periode;
+use App\Models\PilihPeriode;
 use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
 {
     public function index()
     {
+        $idUser = auth()->user()->id;
+        $checkKuesioner = Hasil::where('id_user', $idUser)->count();
+        if ($checkKuesioner > 0) {
+            return redirect()->route('user.questionnaire.check');
+        }
         $kuesioners = Kuesioner::get();
         return view('backend.users_questionnaire', compact('kuesioners'));
     }
@@ -19,11 +25,10 @@ class QuestionnaireController extends Controller
     public function store(Request $request)
     {
         $idUser = auth()->user()->id;
-
-        $lastPeriode = Periode::latest()->first();
-        $periode = Hasil::where('id_user', $idUser)->where('id_periode', $lastPeriode)->count();
+        $checkPeriod = PilihPeriode::first();
+        $periode = Hasil::where('id_user', $idUser)->where('id_periode', $checkPeriod->id_periode)->count();
         if ($periode > 0) {
-            return redirect()->route('user.checkFilled')->with('error', 'Gagal, anda sudah pernah mengisikan kuesioner');
+            return redirect()->route('user.questionnaire.check')->with('error', 'Gagal, anda sudah pernah mengisikan kuesioner');
         }
         $answer = []; // Array yang berisi data jawaban
 
@@ -54,26 +59,26 @@ class QuestionnaireController extends Controller
         $kmTotal =  $totalsPerGroup[1] +  $totalsPerGroup[2] + $totalsPerGroup[3];
         $kmClass = null;
         if ($kmTotal >= 63) {
-            $kmClass = 'Tinggi';
+            $kmClass = 'High';
         } else if ($kmTotal >= 42) {
-            $kmClass = 'Sedang';
+            $kmClass = 'Medium';
         } else {
-            $kmClass = 'Rendah';
+            $kmClass = 'Low';
         }
 
         $rmTotal =  $totalsPerGroup[4] +  $totalsPerGroup[5] + $totalsPerGroup[6] + $totalsPerGroup[7] + $totalsPerGroup[8];
         $rmClass = null;
         if ($rmTotal >= 63) {
-            $rmClass = 'Tinggi';
+            $rmClass = 'High';
         } else if ($rmTotal >= 42) {
-            $rmClass = 'Sedang';
+            $rmClass = 'Medium';
         } else {
-            $rmClass = 'Rendah';
+            $rmClass = 'Low';
         }
 
         Hasil::create([
             'id_user' => $idUser,
-            'id_periode' => 1,
+            'id_periode' => $checkPeriod->id_periode,
             'declarative_knowledge' => $totalsPerGroup[1],
             'procedural_knowledge' => $totalsPerGroup[2],
             'conditional_knowledge' => $totalsPerGroup[3],
@@ -88,6 +93,6 @@ class QuestionnaireController extends Controller
             'rm_class' => $rmClass,
         ]);
 
-        return $idUser;
+        return redirect()->route('user.questionnaire.check');
     }
 }

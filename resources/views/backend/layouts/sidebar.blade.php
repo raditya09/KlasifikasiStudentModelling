@@ -17,7 +17,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('user.checkFilled')}}">
+        <a class="nav-link collapsed" href="{{ route('user.questionnaire.check')}}">
           <i class="bi bi-pencil"></i>
           <span>Kuesioner</span>
         </a>
