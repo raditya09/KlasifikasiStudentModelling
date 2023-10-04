@@ -50,9 +50,12 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::resource('listuser', 'ListUserController')->names('adminListUser');
         Route::resource('listadmin', 'ListAdminController')->names('adminListAdmin');
         Route::resource('admin-questionnaire', 'AdminQuestionnaireController')->names('adminQuestionnaire');
-        Route::resource('admin-result', 'AdminResultController')->names('adminResult');
         Route::resource('admin-period', 'AdminPeriodController')->names('adminPeriod');
+        Route::resource('admin-result', 'AdminResultController')->names('adminResult');
 
+        // Route::get('admin-result', 'AdminResultController@index')->name('adminResult.index');
+        // Route::get('admin-result/cetak', 'AdminResultController@index');
+        Route::get('/hasil/cetak-pdf', 'AdminResultController@cetak_pdf')->name('userQuestionnaire.cetak');
         Route::post('/select-period', 'SelectPeriodController@update')->name('adminSelectPeriod');
         Route::post('/select-period/active', 'SelectPeriodController@active')->name('adminSelectPeriod.active');
 

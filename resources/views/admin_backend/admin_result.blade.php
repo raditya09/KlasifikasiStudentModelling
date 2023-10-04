@@ -11,8 +11,8 @@
                     <th>NAMA</th>
                     <th>ANGKATAN</th>
                     <th>TANGGAL</th>
-                    <th>RM</th>
                     <th>KM</th>
+                    <th>RM</th>
                     <th>ACTION</th>
                 </thead>
                 <tbody>
@@ -21,9 +21,9 @@
                             <td style="font-weight: bold">{{ $result->user->nama_lengkap }}</td>
                             <td>{{ $result->user->angkatan }}</td>
                             <td>{{ $result->formatted_created_at }}</td>
-                            <td>{{ $result->rm_total }}</td>
-                            <td>{{ $result->km_total }}</td>
-                            <td><button class="btn btn-primary btn-sm">Download</button></td>
+                            <td>{{ $result->km_class }}</td>
+                            <td>{{ $result->rm_class }}</td>
+                            <td><a href="{{ route('adminResult.show', ['admin_result' => $result->id]) }}" class="btn btn-primary btn-sm">Download</a></td>
                         </tr>
                     @endforeach
                 </tbody>
