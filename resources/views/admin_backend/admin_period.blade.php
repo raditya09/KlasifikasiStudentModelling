@@ -14,18 +14,21 @@
             </div>
             {{--! end header  --}}
             
-            <div class="d-flex justify-content-center">
-                <div class="border border-2 rounded p-2 text-center">
-                    <h6>Periode Terpilih</h6>
-                    <div class="pt-2 border-bottom"><h6 style="font-weight: bold">{{ $selectPeriod->id_periode }}</h6></div>
-                    <div class="pt-2">
-                        <input value="0" type="radio" class="form-check-input ms-2" id="radioTutup" name="optionsGroup" required>
-                        <label class="form-check-label ps-1 pe-2" for="radioTutup">Tutup Kuesioner</label>
-                        <input value="1" type="radio" class="form-check-input ms-2" id="radioBuka" name="optionsGroup">
-                        <label class="form-check-label me-2 ps-1" for="radioBuka">Buka Kuesioner</label>
+            <form action="{{ route('adminSelectPeriod.active') }}" method="POST" id="form-period">
+                @csrf
+                <div class="d-flex justify-content-center">
+                    <div class="border border-2 rounded p-2 text-center">
+                        <h6>Periode Terpilih</h6>
+                        <div class="pt-2 border-bottom"><h6 style="font-weight: bold">{{ $selectPeriod->id_periode }}</h6></div>
+                        <div class="pt-2">
+                            <input value="0" type="radio" class="form-check-input ms-2" id="radioTutup" name="optionActive" required>
+                            <label class="form-check-label ps-1 pe-2" for="radioTutup">Tutup Kuesioner</label>
+                            <input value="1" type="radio" class="form-check-input ms-2" id="radioBuka" name="optionActive">
+                            <label class="form-check-label me-2 ps-1" for="radioBuka">Buka Kuesioner</label>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
             {{--! start table  --}}
             <div class="my-3 mt-4">
@@ -163,6 +166,7 @@
 @section('script')
 <script>
 
+    // check aktif periode sekarang
     let selectPeriod = {{ $selectPeriod->aktif }};
     if(selectPeriod==0){
         $("#radioTutup").prop("checked", true);
@@ -170,6 +174,53 @@
         $("#radioBuka").prop("checked", true);
     }
 
+    // tutup periode
+    $('#radioTutup').click(function(){
+        if(selectPeriod!=0){
+            Swal.fire({
+                title: 'Tutup kuesioner?',
+                text: "Kuesioner akan dinonaktifkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, nonaktifkan ini!',
+                cancelButtonText: 'Batalkan',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#form-period').submit();
+                }else{
+                    $('#radioBuka').click();
+                }
+            });
+        }
+    });
+
+    // buka periode
+    $('#radioBuka').click(function(){
+        if(selectPeriod!=1){
+            Swal.fire({
+                title: 'Aktifkan kuesioner?',
+                text: "Kuesioner untuk periode ini akan diaktifkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#0d6efd',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, aktifkan ini!',
+                cancelButtonText: 'Batalkan',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#form-period').submit();
+                }else{
+                    $('#radioTutup').click();
+                }
+            });
+        }
+    });
+
+    // edit periode
     $('.edit-button').click(function () {
         let period = $(this).data('period');
         $('#edit-semester').val(period.semester);
@@ -179,6 +230,7 @@
         $('#edit-form').attr('action', formAction);
     });
 
+    // hapus
     $('.delete-form').click(function(event){
             event.preventDefault();
             Swal.fire({
@@ -198,6 +250,7 @@
             })
         });
 
+        // ubah periode terpilih
     $('.edit-periode').click(function(event){
             event.preventDefault();
             Swal.fire({

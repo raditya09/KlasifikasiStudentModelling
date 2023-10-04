@@ -57,6 +57,8 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::resource('admin-period', 'AdminPeriodController')->names('adminPeriod');
 
         Route::post('/select-period', [SelectPeriodController::class, 'update'])->name('adminSelectPeriod');
+        Route::post('/select-period/active', [SelectPeriodController::class, 'active'])->name('adminSelectPeriod.active');
+
         // Route::post('listuser', [UserController::class, 'store']);
     });
 });

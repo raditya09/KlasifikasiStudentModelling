@@ -18,4 +18,12 @@ class SelectPeriodController extends Controller
         $pilihPeriode->update();
         return redirect()->route('adminPeriod.index')->with('success', 'Periode kuesioner telah diubah');
     }
+
+    public function active(Request $request)
+    {
+        $pilihPeriode = PilihPeriode::first();
+        $pilihPeriode->aktif = $request->optionActive;
+        $pilihPeriode->update();
+        return redirect()->route('adminPeriod.index')->with('success', 'Periode kuesioner telah diubah');
+    }
 }
