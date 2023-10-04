@@ -11,17 +11,21 @@
                     <th>NAMA</th>
                     <th>ANGKATAN</th>
                     <th>TANGGAL</th>
-                    <th>HASIL</th>
+                    <th>RM</th>
+                    <th>KM</th>
                     <th>ACTION</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="font-weight: bold">Fajar Gunawan</td>
-                        <td>2021</td>
-                        <td>Apr 23, 2023</td>
-                        <td>lorem ipsum</td>
-                        <td><button class="btn btn-primary btn-sm">Download</button></td>
-                    </tr>
+                    @foreach ($results as $result)
+                        <tr>
+                            <td style="font-weight: bold">{{ $result->user->nama_lengkap }}</td>
+                            <td>{{ $result->user->angkatan }}</td>
+                            <td>{{ $result->formatted_created_at }}</td>
+                            <td>{{ $result->rm_total }}</td>
+                            <td>{{ $result->km_total }}</td>
+                            <td><button class="btn btn-primary btn-sm">Download</button></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

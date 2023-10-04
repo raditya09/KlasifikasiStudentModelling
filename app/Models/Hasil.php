@@ -25,4 +25,9 @@ class Hasil extends Model
         'rm_total',
         'rm_class'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }
