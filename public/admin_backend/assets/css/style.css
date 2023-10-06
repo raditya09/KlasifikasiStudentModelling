@@ -51,7 +51,14 @@ h6 {
     #main {
         padding: 20px;
     }
+
 }
+
+
+.right {
+    float: right;
+    width: max-content;
+  }
 
 /*--------------------------------------------------------------
 # Page Title

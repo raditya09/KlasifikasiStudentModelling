@@ -33,23 +33,24 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="/admin">
-          <i class="bi bi-person"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/listuser">
-              <i class="bi bi-circle"></i><span>List User</span>
-            </a>
-          </li>
-          <li>
-            <a href="/listadmin">
-              <i class="bi bi-circle"></i><span>List Admin</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End User Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="/admin">
+            <i class="bi bi-person"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a href="/listuser">
+                <i class="bi bi-circle"></i><span>List User</span>
+              </a>
+            </li>
+            <li>
+              <a href="/listadmin">
+                <i class="bi bi-circle"></i><span>List Admin</span>
+              </a>
+            </li>
+          </ul>
+        </li><!-- End User Nav --> 
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('logout') }}"

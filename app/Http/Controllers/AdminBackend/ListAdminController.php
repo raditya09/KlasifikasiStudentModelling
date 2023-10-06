@@ -15,7 +15,7 @@ class ListAdminController extends Controller
     //
      public function index()
      {
-         $users = User::all()->where('kelas_user', '1');
+         $users = User::all()->whereIn('kelas_user', ['1','2']);
          return view('admin_backend.admin_listadmin', compact('users'));
      }
      // /**
