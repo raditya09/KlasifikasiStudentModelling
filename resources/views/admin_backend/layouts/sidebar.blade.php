@@ -33,6 +33,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('adminProfile.index')}}">
+          <i class="bi bi-person-badge-fill"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="/admin">
             <i class="bi bi-person"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>

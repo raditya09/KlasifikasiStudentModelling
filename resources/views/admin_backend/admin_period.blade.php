@@ -62,7 +62,7 @@
                                         <form action="{{ route('adminSelectPeriod') }}" method="POST" class="edit-periode">
                                             @csrf
                                             <input type="text" class="form-control d-none" name="id_periode" value="{{ $period->id }}">
-                                            <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-hand-index-fill me-1"></i> Pilih</button>
+                                            <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-check-lg me-1"></i> Pilih</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="create-semester" class="col-form-label">Kategori soal:</label>
+                                    <label for="create-semester" class="col-form-label">Semester:</label>
                                     <select class="form-select" name="semester" id="create-semester">
                                         <option value="1">1. Ganjil</option>
                                         <option value="2">2. Genap</option>
