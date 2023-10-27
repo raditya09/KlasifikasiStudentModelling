@@ -14,7 +14,8 @@ class QuestionnaireController extends Controller
     public function index()
     {
         $idUser = auth()->user()->id;
-        $checkKuesioner = Hasil::where('id_user', $idUser)->count();
+        $checkPeriod = PilihPeriode::first();
+        $checkKuesioner = Hasil::where('id_user', $idUser)->where('id_periode', $checkPeriod->id_periode)->count();
         if ($checkKuesioner > 0) {
             return redirect()->route('user.questionnaire.check');
         }

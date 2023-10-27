@@ -14,7 +14,7 @@ class SelectPeriodController extends Controller
         $id = $request->id_periode;
         $pilihPeriode = PilihPeriode::first();
         $pilihPeriode->id_periode = $id;
-        $pilihPeriode->aktif = '1';
+        $pilihPeriode->aktif = '0';
         $pilihPeriode->update();
         return redirect()->route('adminPeriod.index')->with('success', 'Periode kuesioner telah diubah');
     }

@@ -20,8 +20,8 @@ class UiController extends Controller
         if ($checkPeriod->aktif == 0 ||  !$checkPeriod->id_periode) {
             return view('backend.closed_questionnaire');
         }
-        $idUser = auth()->user()->id;
 
+        $idUser = auth()->user()->id;
         $countResult = Hasil::where('id_user', $idUser)->where('id_periode', $checkPeriod->id_periode)->count();
         if ($countResult > 0) {
             return view('backend.completed_questionnaire');
