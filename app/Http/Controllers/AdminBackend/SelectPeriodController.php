@@ -13,6 +13,9 @@ class SelectPeriodController extends Controller
     {
         $id = $request->id_periode;
         $pilihPeriode = PilihPeriode::first();
+        if ($pilihPeriode->id_periode == $id) {
+            return redirect()->route('adminPeriod.index')->with('error', 'Periode kuesioner yang dipilih sama dengan sebelumnya');
+        }
         $pilihPeriode->id_periode = $id;
         $pilihPeriode->aktif = '0';
         $pilihPeriode->update();

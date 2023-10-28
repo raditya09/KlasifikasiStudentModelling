@@ -649,3 +649,11 @@
 
     </main><!-- End #main -->
 @endsection
+
+@section('script')
+<script>
+   $(document).ready(function() {
+       $("#sidebar-dashboard").removeClass("collapsed");
+   });
+</script>
+@endsection

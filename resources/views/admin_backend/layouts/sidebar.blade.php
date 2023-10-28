@@ -6,52 +6,52 @@
         <span>Dosen</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a id="sidebar-dashboard" class="nav-link collapsed" href="{{ route('adminDashboard.index') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('adminQuestionnaire.index')}}">
+        <a id="sidebar-questionnaire" class="nav-link collapsed" href="{{ route('adminQuestionnaire.index')}}">
           <i class="bi bi-pencil"></i>
           <span>Kuesioner</span>
         </a>
       </li><!-- End Kuesioner Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('adminPeriod.index')}}">
+        <a id="sidebar-period" class="nav-link collapsed" href="{{ route('adminPeriod.index')}}">
           <i class="bi bi-calendar4"></i>
           <span>Periode</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('adminResult.index')}}">
+        <a id="sidebar-result" class="nav-link collapsed" href="{{ route('adminResult.index')}}">
           <i class="bi bi-book"></i>
           <span>Hasil</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('adminProfile.index')}}">
+        <a id="sidebar-profile" class="nav-link collapsed" href="{{ route('adminProfile.index')}}">
           <i class="bi bi-person-badge-fill"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="/admin">
+          <a id="sidebar-listperson" class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="/admin">
             <i class="bi bi-person"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
-          <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <ul id="users-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
             <li>
-              <a href="/listuser">
+              <a id="sidebar-item-listuser" href="/listuser">
                 <i class="bi bi-circle"></i><span>List User</span>
               </a>
             </li>
             <li>
-              <a href="/listadmin">
+              <a id="sidebar-item-listadmin" href="/listadmin">
                 <i class="bi bi-circle"></i><span>List Admin</span>
               </a>
             </li>

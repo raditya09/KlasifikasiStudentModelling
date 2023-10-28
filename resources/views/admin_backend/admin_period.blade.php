@@ -19,7 +19,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="border border-2 rounded p-2 text-center">
                         <h6>Periode Terpilih</h6>
-                        <div class="pt-2 border-bottom"><h6 style="font-weight: bold">{{ $selectPeriod->id_periode }}</h6></div>
+                        <div class="pt-2 border-bottom"><h6 style="font-weight: bold">{{ $selectPeriod->period }}</h6></div>
                         <div class="pt-2">
                             <input value="0" type="radio" class="form-check-input ms-2" id="radioTutup" name="optionActive" required>
                             <label class="form-check-label ps-1 pe-2" for="radioTutup">Tutup Kuesioner</label>
@@ -62,7 +62,11 @@
                                         <form action="{{ route('adminSelectPeriod') }}" method="POST" class="edit-periode">
                                             @csrf
                                             <input type="text" class="form-control d-none" name="id_periode" value="{{ $period->id }}">
-                                            <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-check-lg me-1"></i> Pilih</button>
+                                            @if ($period->id==$selectPeriod->id_periode)
+                                                <button type="submit" class="btn btn-primary btn-sm" disabled><i class="bi bi-check-all bi-lg me-1"></i> Pilih</button>
+                                            @else
+                                                <button type="submit" class="btn btn-light btn-sm border"><i class="bi bi-check-lg me-1"></i> Pilih</button>
+                                            @endif
                                         </form>
                                     </td>
                                 </tr>
@@ -269,5 +273,8 @@
                 }
             })
         });
+    $(document).ready(function() {
+        $("#sidebar-period").removeClass("collapsed");
+    });
 </script>
 @endsection

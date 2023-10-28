@@ -173,6 +173,9 @@
   <script src="{{ asset('backend/assets/js/main.js')}}"></script>
   <script src="{{ asset('css/sweealert2.all.min.js')}}"></script>
 
+  @yield('script')
+
+
   @if (session('success'))
     <script>
       const Toast = Swal.mixin({
