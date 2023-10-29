@@ -21,7 +21,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">List Admin</h6>
-                    <button class="right " id="addUserButton">Tambah Admin</button>
+                    <button class="btn btn-primary ellipsis right " id="addUserButton">Tambah Admin</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -35,6 +35,7 @@
                                     <th>Angkatan</th>
                                     <th>E-Mail</th>
                                     <th>Role</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,6 +49,7 @@
                                     <td>{{ $user->angkatan }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->kelas_user }}</td>
+                                    <td><a href>Edit</a> <a href>Hapus</a></td>
                                     <!-- Tambahkan kolom-kolom lain yang ingin Anda tampilkan -->
                                 </tr>
                                 <?php $i++;?>
@@ -69,16 +71,16 @@
                         title: 'Tambah Admin Baru',
                         html:
                             '<input id="nama_lengkap" class="swal2-input" placeholder="Nama Lengkap">' +
-                            '<input id="nip" class="swal2-input" placeholder="NIP">' +
+                            '<input id="nim" class="swal2-input" placeholder="NIP">' +
                             '<input id="email" class="swal2-input" placeholder="Email">'+
                             '<input id="password" class="swal2-input" placeholder="Password">',
                         focusConfirm: false,
                         preConfirm: () => {
                             const nama_lengkap = Swal.getPopup().querySelector('#nama_lengkap').value;
-                            const nip = Swal.getPopup().querySelector('#nim').value;
+                            const nim = Swal.getPopup().querySelector('#nim').value;
                             const email = Swal.getPopup().querySelector('#email').value;
                             const password = Swal.getPopup().querySelector('#password').value;
-                            return { nama_lengkap: nama_lengkap, nim:nim, semester:semester, angkatan:angkatan, email: email, password:password };
+                            return { nama_lengkap: nama_lengkap, nim:nim, email: email, password:password };
                         }
                     }).then((result) => {
                         if (result.isConfirmed && result.value.nama_lengkap && result.value.nim && result.value.semester && result.value.angkatan && result.value.email && result.value.password) {
