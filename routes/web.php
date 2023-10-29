@@ -52,6 +52,8 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::resource('admin-questionnaire', 'AdminQuestionnaireController')->names('adminQuestionnaire');
         Route::resource('admin-period', 'AdminPeriodController')->names('adminPeriod');
         Route::resource('admin-result', 'AdminResultController')->names('adminResult');
+        Route::resource('admin-profile', 'AdminProfileController')->names('adminProfile');
+
 
         // Route::get('admin-result', 'AdminResultController@index')->name('adminResult.index');
         // Route::get('admin-result/cetak', 'AdminResultController@index');

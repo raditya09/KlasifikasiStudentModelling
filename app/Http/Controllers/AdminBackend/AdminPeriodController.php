@@ -12,7 +12,7 @@ class AdminPeriodController extends Controller
 
     public function index()
     {
-        $periods = Periode::get();
+        $periods = Periode::orderBy('id', 'desc')->get();
         $selectPeriod = PilihPeriode::first();
         if (!$selectPeriod->id_periode) {
             $selectPeriod->id_periode = 'Belum Ditambahkan';
@@ -23,7 +23,7 @@ class AdminPeriodController extends Controller
             } else {
                 $checkPeriod->semester = 'Genap';
             }
-            $selectPeriod->id_periode = $checkPeriod->semester . ' ' . $checkPeriod->tahun;
+            $selectPeriod->period = $checkPeriod->semester . ' ' . $checkPeriod->tahun;
         }
 
         return view('admin_backend.admin_period', compact('periods', 'selectPeriod'));

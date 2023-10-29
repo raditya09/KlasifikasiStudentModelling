@@ -10,21 +10,21 @@
         <span class="d-flex flex-column align-items-center">Teknik Informatika</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="/dashboard">
+        <a id="sidebar-dashboard" class="nav-link collapsed" href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('user.questionnaire.check')}}">
+        <a id="sidebar-questionnaire" class="nav-link collapsed" href="{{ route('user.questionnaire.check')}}">
           <i class="bi bi-pencil"></i>
           <span>Kuesioner</span>
         </a>
       </li><!-- End Kuesioner Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/profile">
+        <a id="sidebar-profile" class="nav-link collapsed" href="/profile">
           <i class="bi bi-person"></i>
           <span>Profil</span>
         </a>

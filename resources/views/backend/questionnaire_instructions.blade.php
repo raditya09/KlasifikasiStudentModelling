@@ -53,3 +53,11 @@
         </div>
      </main>
  @endsection
+
+ @section('script')
+ <script>
+    $(document).ready(function() {
+        $("#sidebar-questionnaire").removeClass("collapsed");
+    });
+ </script>
+@endsection

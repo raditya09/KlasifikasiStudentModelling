@@ -59,3 +59,13 @@
 
     </main><!-- End #main -->
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $("#sidebar-listperson").removeClass("collapsed");
+            $("#users-nav").addClass("show");
+            $("#sidebar-item-listuser").addClass("active");
+        });
+    </script>
+@endsection
