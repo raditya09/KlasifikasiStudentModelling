@@ -13,7 +13,8 @@ class AdminDashboardController extends Controller
   //
   public function index()
   {
-    $angkatanCounts = User::select('angkatan', DB::raw('count(*) as total'))
+    $angkatanCounts = User::whereNotNull('angkatan')
+      ->select('angkatan', DB::raw('count(*) as total'))
       ->groupBy('angkatan')
       ->orderBy('angkatan', 'desc')
       ->get();

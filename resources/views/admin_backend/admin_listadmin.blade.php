@@ -28,28 +28,34 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>id</th>
+                                    <th>No</th>
                                     <th>Nama Lengkap</th>
-                                    <th>NIM</th>
-                                    <th>Semester</th>
-                                    <th>Angkatan</th>
+                                    <th>NIP</th>
+                                    <!-- <th>Semester</th>
+                                    <th>Angkatan</th> -->
                                     <th>E-Mail</th>
                                     <th>Role</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i=1;?>
+                            <?php $i=1;?>
                                 @foreach($users as $user)
                                 <tr>
                                     <td><?php echo $i;?></td>
                                     <td>{{ $user->nama_lengkap }}</td>
                                     <td>{{ $user->nim }}</td>
-                                    <td>{{ $user->semester }}</td>
-                                    <td>{{ $user->angkatan }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->kelas_user }}</td>
-                                    <td><a href>Edit</a> <a href>Hapus</a></td>
+                                    <td> <?php if ($user->kelas_user == 1) {
+                                            echo "Super Admin";
+                                        } else {
+                                            echo "Admin";
+                                        } ?>
+                                    </td>
+                                    <td> 
+                                        <a href="Edit">Edit</a> 
+                                        <a href="Hapus">Hapus</a>
+                                    </td>
                                     <!-- Tambahkan kolom-kolom lain yang ingin Anda tampilkan -->
                                 </tr>
                                 <?php $i++;?>
@@ -83,7 +89,7 @@
                             return { nama_lengkap: nama_lengkap, nim:nim, email: email, password:password };
                         }
                     }).then((result) => {
-                        if (result.isConfirmed && result.value.nama_lengkap && result.value.nim && result.value.semester && result.value.angkatan && result.value.email && result.value.password) {
+                        if (result.isConfirmed && result.value.nama_lengkap && result.value.nim && result.value.email && result.value.password) {
                             // Kirim data user ke server menggunakan AJAX atau formulir biasa
                             // Contoh: Anda dapat menggunakan Axios untuk AJAX
                             axios.post('/listadmin', {
