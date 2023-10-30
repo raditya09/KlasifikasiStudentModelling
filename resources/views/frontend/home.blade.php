@@ -64,7 +64,7 @@
       <div class="container" data-aos="fade-up">
         <header class="section-header">
           <h2>Fitur</h2>
-          <p>Ratione mollitia eos ab laudantium rerum beatae quo</p>
+          <p>Klasifikasi Student Modelling</p>
         </header>
           <div class="row feature-icons" data-aos="fade-up" data-aos-delay="100" >
             <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
@@ -77,8 +77,8 @@
                 <div class="col-md-6 icon-box" data-aos="fade-up">
                   <i class="ri-line-chart-line"></i>
                   <div>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h4>Tampilan yang Simpel</h4>
+                    <p>Tampilan yang sederhana memudahkan pengguna dalam mengoperasikan aplikasi ini</p>
                   </div>
                 </div>
 
@@ -171,7 +171,7 @@
                 <h4>Web 3</h4>
                 <p>Web</p>
                 <div class="portfolio-links">
-                  <a href="{{ asset('frontend/assets/img/portfolio/portfolio-2.jpg')}}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
+                  <a href="{{ asset('frontend/assets/img/portfolio/portfolio-2.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
                   <!-- <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a> -->
                 </div>
               </div>
@@ -289,7 +289,7 @@
 
         <header class="section-header">
           <h2>Tim</h2>
-          <p>Anggota Tim Pengembangan Sistem</p>
+          <p>Pengembangan Sistem</p>
         </header>
 
         <div class="row gy-4">
@@ -308,7 +308,6 @@
               <div class="member-info">
                 <h4>Intan Sulistyaningrum Sakkinah, S.Pd., M.Eng.</h4>
                 <span>Ketua Peneliti</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
           </div>
@@ -327,7 +326,6 @@
               <div class="member-info">
                 <h4>Raditya Arief Pratama, S.Kom., M.Eng.</h4>
                 <span>Anggota Peneliti</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
               </div>
             </div>
           </div>
@@ -346,7 +344,6 @@
               <div class="member-info">
                 <h4>Qonitatul Hasanah, S.T., M.Tr.T.</h4>
                 <span>Anggota Peneliti</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
               </div>
             </div>
           </div>
@@ -364,7 +361,6 @@
               <div class="member-info">
                 <h4>Ahmad Firdaus Tarmidzi</h4>
                 <span>Mahasiswa</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
           </div>
@@ -384,7 +380,6 @@
               <div class="member-info">
                 <h4>Dimas Pratama</h4>
                 <span>Mahasiswa</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
           </div>
@@ -403,7 +398,6 @@
               <div class="member-info">
                 <h4>Amalia Fitria Dewi </h4>
                 <span>Mahasiswa</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
               </div>
             </div>
           </div>
@@ -422,7 +416,6 @@
               <div class="member-info">
                 <h4>Ahmad Fikril Al Muzakki</h4>
                 <span>Mahasiswa</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
               </div>
             </div>
           </div>

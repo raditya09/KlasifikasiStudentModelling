@@ -26,7 +26,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>No</th>
                                 <th>Nama Lengkap</th>
                                 <th>NIM</th>
                                 <th>Semester</th>
@@ -36,17 +36,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                        <?php $i=1;?>
+                        @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->id}}</td>
+                                <td><?php echo $i;?></td>
                                 <td>{{ $user->nama_lengkap }}</td>
-                                 <td>{{ $user->nim }}</td>
+                                <td>{{ $user->nim }}</td>
                                 <td>{{ $user->semester }}</td>
                                 <td>{{ $user->angkatan }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->kelas_user }}</td>
+                                <td><?php if ($user->kelas_user == 3) {
+                                            echo "Mahasiswa";
+                                        } ?>
+                                </td>
                                 <!-- Tambahkan kolom-kolom lain yang ingin Anda tampilkan -->
                             </tr>
+                            <?php $i++;?>
                              @endforeach
                         </tbody>
                     </table>

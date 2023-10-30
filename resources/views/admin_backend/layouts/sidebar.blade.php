@@ -2,8 +2,16 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li>      
-        <h6>Raditya Arief Pratama</h6>
-        <span>Dosen</span>
+        <h6><?php $user = Auth::user();
+          echo($user->nama_lengkap)?>
+        </h6>
+        <span>
+          <?php if ($user->kelas_user == 1) {
+            echo "Super Admin";
+          } else {
+            echo "Admin";
+          } ?>
+        </span>
       </li>
       <li class="nav-item">
         <a id="sidebar-dashboard" class="nav-link collapsed" href="{{ route('adminDashboard.index') }}">
@@ -50,11 +58,19 @@
                 <i class="bi bi-circle"></i><span>List User</span>
               </a>
             </li>
-            <li>
+            <?php $user = Auth::user(); 
+            if ($user->kelas_user ==1) { ?>
+              <li>
               <a id="sidebar-item-listadmin" href="/listadmin">
                 <i class="bi bi-circle"></i><span>List Admin</span>
               </a>
             </li>
+          <?php } ?>
+            <!-- <li>
+              <a id="sidebar-item-listadmin" href="/listadmin">
+                <i class="bi bi-circle"></i><span>List Admin</span>
+              </a>
+            </li> -->
           </ul>
         </li><!-- End User Nav --> 
 
