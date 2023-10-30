@@ -35,7 +35,7 @@
                             <input value="2" type="radio" class="form-check-input" id="radio2{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
                             <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio2{{ $kuesioner->id }}">2</label>
         
-                            <input value="3" type="radio" class="form-check-input" id="radio3{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}" checked>
+                            <input value="3" type="radio" class="form-check-input" id="radio3{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">
                             <label class="form-check-label pe-1 pe-sm-5 ps-1" for="radio3{{ $kuesioner->id }}">3</label>
         
                             <input value="4" type="radio" class="form-check-input" id="radio4{{ $kuesioner->id }}" name="optionsGroup{{ $kuesioner->id }}">

@@ -41,7 +41,7 @@
                                 show: false
                                 }
                             },
-                            labels: ['High', 'Medium', 'Low'],
+                            labels: kmClass,
                             colors: ['#00e396', '#F8DC1A', '#FA240C']
                             }).render();
                         });
@@ -67,7 +67,7 @@
                                 return item.total;
                             });
                             new ApexCharts(document.querySelector("#rmPieChart"), {
-                            series: [13, 43, 22],
+                            series: rmTotal,
                             chart: {
                                 height: 350,
                                 type: 'pie',
@@ -75,7 +75,7 @@
                                 show: false
                                 }
                             },
-                            labels: ['High', 'Medium', 'Low'],
+                            labels: rmClass,
                             colors: ['#00e396', '#F8DC1A', '#FA240C']
                             }).render();
                         });
