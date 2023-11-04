@@ -80,62 +80,55 @@
 
                 </div>
 
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
                   <!-- Profile Edit Form -->
-                  <form>
-                    <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                      <div class="col-md-8 col-lg-9">
-                        <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                        </div>
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                  <form method="POST" action="/profile/update" enctype="multipart/form-data">
+                      @csrf
+              
+                      <div class="row mb-3">
+                          <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                          <div class="col-md-8 col-lg-9">
+                              <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile">
+                              <div class="pt-2">
+                                  <input type="file" name="profile_image" class="form-control-file">
+                              </div>
+                          </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="nama_lengkap" class="col-md-4 col-lg-3 col-form-label">{{ __('Nama Lengkap') }}</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="nama_lengkap" type="text" class="form-control" id="nama_lengkap" value="Raditya Arief Pratama">
+              
+                      <div class="row mb-3">
+                          <label for="nama_lengkap" class="col-md-4 col-lg-3 col-form-label">{{ __('Nama Lengkap') }}</label>
+                          <div class="col-md-8 col-lg-9">
+                              <input name="nama_lengkap" type="text" class="form-control" id="nama_lengkap" value="{{ Auth::user()->nama_lengkap }}">
+                          </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="nim" class="col-md-4 col-lg-3 col-form-label">{{ __('NIM') }}</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="nim" type="text" class="form-control" id="nim" value="E4212423">
+              
+                      <div class="row mb-3">
+                          <label for="nim" class="col-md-4 col-lg-3 col-form-label">{{ __('NIM') }}</label>
+                          <div class="col-md-8 col-lg-9">
+                              <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->nim }}">
+                          </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="semester" class="col-md-4 col-lg-3 col-form-label">{{ __('Semester') }}</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="semester" type="text" class="form-control" id="semester" value="5">
+              
+                      <div class="row mb-3">
+                          <label for="semester" class="col-md-4 col-lg-3 col-form-label">{{ __('Semester') }}</label>
+                          <div class="col-md-8 col-lg-9">
+                              <input name="semester" type="text" class="form-control" id="semester" value="{{ Auth::user()->semester }}">
+                          </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="angkatan" class="col-md-4 col-lg-3 col-form-label">{{ __('Angkatan') }}</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="angkatan" type="text" class="form-control" id="angkatan" value="2021">
+              
+                      <div class="row mb-3">
+                          <label for="angkatan" class="col-md-4 col-lg-3 col-form-label">{{ __('Angkatan') }}</label>
+                          <div class="col-md-8 col-lg-9">
+                              <input name="angkatan" type="text" class="form-control" id="angkatan" value="{{ Auth::user()->angkatan }}">
+                          </div>
                       </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="email" class="col-md-4 col-lg-3 col-form-label">{{ __('E-Mail') }}</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="email" value="radityaariefp@polije.ac.id">
+              
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-primary">Save Changes</button>
                       </div>
-                    </div>
-
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                  </form><!-- End Profile Edit Form -->
-
-                </div>
+                  </form>
+              </div> <!-- End Profile Edit Form -->
+              
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
