@@ -21,21 +21,16 @@ class ProfileController extends Controller
             'nim' => 'required',
             'semester' => 'required',
             'angkatan' => 'required',
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Example for image upload
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
 
-        // Handle profile image upload (if a new image is provided)
         if ($request->hasFile('profile_image')) {
-            // Handle image upload and update the user's profile image
             $image = $request->file('profile_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('profile_images'), $imageName);
 
-            // Update the user's profile image in the database
-            // Example: Auth::user()->update(['profile_image' => $imageName]);
         }
 
-        // Update other profile fields
         Auth::user()->update([
             'nama_lengkap' => $request->input('nama_lengkap'),
             'nim' => $request->input('nim'),
