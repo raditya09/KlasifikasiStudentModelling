@@ -39,7 +39,10 @@ Route::middleware(['class:3'])->group(function () {
         Route::get('instruction', 'UiController@instruction')->name('user.questionnaire.instruction');
         Route::get('check-questionnaire', 'UiController@checkQuestionnaire')->name('user.questionnaire.check');
         Route::get('closed-questionnaire', 'UiController@closedQuestionnaire')->name('user.questionnaire.closed');
-        Route::post('/profile/update', 'Backend\ProfileController@update'); 
+        Route::post('/profile/update', 'ProfileController@update'); 
+        Route::get('/profile/change-password', 'ProfileController@changePasswordForm')->name('profile.changePasswordForm');
+        Route::post('/profile/change-password', 'ProfileController@changePassword')->name('profile.changePassword');
+
 
     });
 });
