@@ -16,35 +16,46 @@
         <section class="section dashboard">
             <div class="row">
 
-                <!-- Komponen 1: Hasil Nilai Kuesioner RM -->
-                <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nilai RM</h5>
-                            <!-- Tambahkan konten di sini -->
-                            <table>
-                                {{-- <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    
-                                </tr>
-                                @foreach ($kuesionerRM as $kuesioner)
-                                <tr>
-                                    <td>{{ $kuesioner->id }}</td>
-                                    <td>{{ $kuesioner->nama }}</td>
-                                 
-                                </tr>
-                                @endforeach --}}
-                            </table>
-                        </div>
-                    </div>
-                </div><!-- End Hasil Nilai Kuesioner RM -->
-
-                <!-- Komponen 2: Hasil Nilai Kuesioner KM -->
+                <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
                             <h5 class="card-title">Nilai KM</h5>
+                            <!-- Tambahkan konten di sini -->
+                            <div id="kmPieChart"></div>
+                            <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                let kmCounts = @json($kmCounts);
+    
+                                let kmClass = kmCounts.map(function(item) {
+                                    return item.km_class.toString();
+                                });
+                                let kmTotal = kmCounts.map(function(item) {
+                                    return item.total;
+                                });
+                                new ApexCharts(document.querySelector("#kmPieChart"), {
+                                series: kmTotal,
+                                chart: {
+                                    height: 350,
+                                    type: 'pie',
+                                    toolbar: {
+                                    show: false
+                                    }
+                                },
+                                labels: kmClass,
+                                colors: ['#00e396', '#F8DC1A', '#FA240C']
+                                }).render();
+                            });
+                            </script>
+                        </div>
+                    </div>
+                </div><!-- End Hasil Nilai Kuesioner KM -->
+
+                <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Nilai RM</h5>
                             <!-- Tambahkan konten di sini-->
                             <table>
                                 {{-- <tr>
@@ -62,7 +73,7 @@
                             </table>
                         </div>
                     </div>
-                </div><!-- End Hasil Nilai Kuesioner KM -->
+                </div><!-- End Hasil Nilai Kuesioner RM -->
 
                 <!-- Komponen 3: Rangkuman -->
                 <div class="col-xxl-4 col-md-6">
@@ -100,7 +111,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
-                            <p>KM adalah ..........</p>
+                            <p>Knowledge of Metacognitif (KM) adalah ..........</p>
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->
@@ -111,7 +122,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan RM</h5>
                             <!-- Tambahkan penjelasan tentang RM di sini -->
-                            <p>RM adalah............</p>
+                            <p> Regulation of Metacognitif (RM) adalah............</p>
                         </div>
                     </div>
                 </div><!-- End Penjelasan RM -->

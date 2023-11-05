@@ -4,30 +4,23 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Models\KuesionerRM;
-// use App\Models\KuesionerKM;
-// use App\Models\Rangkuman;
-// use App\Models\HistoriPengisian;
-// use App\Models\PenjelasanKM;
-// use App\Models\PenjelasanRM;
+use App\Models\Hasil;
+use App\Models\User;
+
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index(){
-        // $kuesionerRM = KuesionerRM::all();
-        // $kuesionerKM = KuesionerKM::all();
-        // $rangkuman = Rangkuman::all();
-        // $historiPengisian = HistoriPengisian::all();
-        // $penjelasanKM = PenjelasanKM::first(); 
-        // $penjelasanRM = PenjelasanRM::first(); 
-
-        return view('backend.dashboard', [
-            // 'kuesionerRM' => $kuesionerRM,
-            // 'kuesionerKM' => $kuesionerKM,
-            // 'rangkuman' => $rangkuman,
-            // 'historiPengisian' => $historiPengisian,
-            // 'penjelasanKM' => $penjelasanKM,
-            // 'penjelasanRM' => $penjelasanRM,
-        ]);
+    public function index()
+    {
+      $kmCounts = Hasil::select('km_class', DB::raw('count(*) as total'))
+        ->groupBy('km_class')
+        ->orderByRaw("FIELD(km_class, 'High', 'Medium', 'Low')")
+        ->get();
+      $rmCounts = Hasil::select('rm_class', DB::raw('count(*) as total'))
+        ->groupBy('rm_class')
+        ->orderByRaw("FIELD(rm_class, 'High', 'Medium', 'Low')")
+        ->get();
+      return view('backend.dashboard', compact('kmCounts', 'rmCounts'));
     }
 }
