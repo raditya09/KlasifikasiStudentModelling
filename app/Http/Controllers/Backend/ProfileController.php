@@ -46,6 +46,8 @@ class ProfileController extends Controller
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|string|min:8|confirmed',
+        ], [
+            'new_password.min' => 'Password tidak boleh kurang dari 8 karakter',
         ]);
 
         $user = Auth::user();
