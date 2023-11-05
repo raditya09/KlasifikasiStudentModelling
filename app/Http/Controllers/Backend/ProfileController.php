@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Backend; 
+namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,27 +23,27 @@ class ProfileController extends Controller
             'nim' => 'required',
             'semester' => 'required',
             'angkatan' => 'required',
-            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('profile_image')) {
             $image = $request->file('profile_image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('profile_images'), $imageName);
-
+            $imagePath = $image->store('images', 'public');
         }
 
-        Auth::user()->update([
-            'nama_lengkap' => $request->input('nama_lengkap'),
-            'nim' => $request->input('nim'),
-            'semester' => $request->input('semester'),
-            'angkatan' => $request->input('angkatan'),
-        ]);
+        $user = User::findOrFail(auth()->user()->id);
+        $user->nama_lengkap = $request->input('nama_lengkap');
+        $user->nim = $request->input('nim');
+        $user->semester = $request->input('semester');
+        $user->angkatan = $request->input('angkatan');
+        $user->foto = $imagePath;
+        $user->update();
 
-        return redirect('/dashboard')->with('success', 'Profile updated successfully');
+        return redirect('/dashboard')->with('success', 'Profile updated successfully1');
     }
 
-    public function changePassword(Request $request){
+    public function changePassword(Request $request)
+    {
         $request->validate([
             'current_password' => 'required',
             'new_password' => 'required|string|min:8|confirmed',
@@ -63,5 +64,4 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Password changed successfully');
     }
-
 }
