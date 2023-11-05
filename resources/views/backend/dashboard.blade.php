@@ -16,61 +16,52 @@
         <section class="section dashboard">
             <div class="row">
 
-                <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
-                <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card">
-                        <div class="card-body">
-                            <h5 class="card-title">Nilai KM</h5>
-                            <!-- Tambahkan konten di sini -->
-                            <div id="kmPieChart"></div>
-                            <script>
+               <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
+               <div class="col-xxl-4 col-md-6">
+                <div class="card info-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nilai KM</h5>
+                        <span class="pull-right">80</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <script>
+                            // Script JavaScript dapat tetap sama
                             document.addEventListener("DOMContentLoaded", () => {
                                 let kmCounts = @json($kmCounts);
-    
-                                let kmClass = kmCounts.map(function(item) {
-                                    return item.km_class.toString();
-                                });
-                                let kmTotal = kmCounts.map(function(item) {
-                                    return item.total;
-                                });
-                                new ApexCharts(document.querySelector("#kmPieChart"), {
-                                series: kmTotal,
-                                chart: {
-                                    height: 350,
-                                    type: 'pie',
-                                    toolbar: {
-                                    show: false
-                                    }
-                                },
-                                labels: kmClass,
-                                colors: ['#00e396', '#F8DC1A', '#FA240C']
-                                }).render();
+                                let kmTotal = kmCounts.reduce(function(total, item) {
+                                    return total + item.total;
+                                }, 0);
+                                let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
+                                document.querySelector(".progress-bar").style.width = percentage + "%";
+                                document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
                             });
-                            </script>
-                        </div>
+                        </script>
                     </div>
-                </div><!-- End Hasil Nilai Kuesioner KM -->
+                </div>
+            </div><!-- End Hasil Nilai Kuesioner KM -->
 
                 <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
                             <h5 class="card-title">Nilai RM</h5>
-                            <!-- Tambahkan konten di sini-->
-                            <table>
-                                {{-- <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
-                                    
-                                </tr>
-                                @foreach ($kuesionerRM as $kuesioner)
-                                <tr>
-                                    <td>{{ $kuesioner->id }}</td>
-                                    <td>{{ $kuesioner->nama }}</td>
-                                 
-                                </tr>
-                                @endforeach --}}
-                            </table>
+                            <span class="pull-right">80</span>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <script>
+                                // Script JavaScript dapat tetap sama
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    let kmCounts = @json($kmCounts);
+                                    let kmTotal = kmCounts.reduce(function(total, item) {
+                                        return total + item.total;
+                                    }, 0);
+                                    let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
+                                    document.querySelector(".progress-bar").style.width = percentage + "%";
+                                    document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
+                                });
+                            </script>
                         </div>
                     </div>
                 </div><!-- End Hasil Nilai Kuesioner RM -->
