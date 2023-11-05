@@ -3,7 +3,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
       <li>
         <a class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-        <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+        <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
         </a><!-- End Profile Iamge Icon -->
         <!-- <h6> {{ Auth::user()->name }}</h6> -->
         <h6 class="d-flex flex-column align-items-center">Raditya Arief Pratama</h6>

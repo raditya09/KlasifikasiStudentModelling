@@ -20,7 +20,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+              <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
               <h2>Raditya Arief Pratama</h2>
               <h3>Teknik Informatika</h3>
             </div>
@@ -104,7 +104,7 @@
                       <div class="row mb-3">
                           <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                           <div class="col-md-8 col-lg-9">
-                              <img src="{{ asset('backend/assets/img/profile-img.jpg')}}" alt="Profile">
+                              <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile">
                               <div class="pt-2">
                                   <input type="file" name="profile_image" class="form-control-file">
                               </div>
