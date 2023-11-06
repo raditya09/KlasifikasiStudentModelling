@@ -16,30 +16,30 @@
         <section class="section dashboard">
             <div class="row">
 
-                <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
+                <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
-                            <h5 class="card-title">Nilai RM</h5>
+                            <h5 class="card-title">Knowledge of Metacognitif (KM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
                             </div>
-                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }}</div>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} </div>
                             @endforeach
                         </div>
                     </div>
-                </div><!-- End Hasil Nilai Kuesioner RM -->
+                </div><!-- End Hasil Nilai Kuesioner KM -->
 
 
                 <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
-                            <h5 class="card-title">Nilai RM</h5>
+                            <h5 class="card-title">Regulation of Metacognitif (RM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/132*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="68"></div>
                             </div>
                             <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
                             @endforeach
