@@ -16,52 +16,33 @@
         <section class="section dashboard">
             <div class="row">
 
-               <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
-               <div class="col-xxl-4 col-md-6">
-                <div class="card info-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Nilai KM</h5>
-                        <span class="pull-right">5</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Nilai RM</h5>
+                            @foreach ($historiPengisian as $item)
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
+                            </div>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }}</div>
+                            @endforeach
                         </div>
-                        <script>
-                            // Script JavaScript dapat tetap sama
-                            document.addEventListener("DOMContentLoaded", () => {
-                                let kmCounts = @json($kmCounts);
-                                let kmTotal = kmCounts.reduce(function(total, item) {
-                                    return total + item.total;
-                                }, 0);
-                                let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
-                                document.querySelector(".progress-bar").style.width = percentage + "%";
-                                document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
-                            });
-                        </script>
                     </div>
-                </div>
-            </div><!-- End Hasil Nilai Kuesioner KM -->
+                </div><!-- End Hasil Nilai Kuesioner RM -->
+
 
                 <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
                             <h5 class="card-title">Nilai RM</h5>
-                            <span class="pull-right">80</span>
+                            @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="132"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
                             </div>
-                            <script>
-                                // Script JavaScript dapat tetap sama
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    let kmCounts = @json($kmCounts);
-                                    let kmTotal = kmCounts.reduce(function(total, item) {
-                                        return total + item.total;
-                                    }, 0);
-                                    let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
-                                    document.querySelector(".progress-bar").style.width = percentage + "%";
-                                    document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
-                                });
-                            </script>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
+                            @endforeach
                         </div>
                     </div>
                 </div><!-- End Hasil Nilai Kuesioner RM -->
@@ -74,8 +55,8 @@
                             <!-- Tambahkan rangkuman seperti "Low / Medium / High" -->
                             <ul>
                                 @foreach ($historiPengisian as $item)
-                                <p>KM = {{ $item->km_class }}</p>
-                                <p>RM = {{ $item->rm_class }}</p><br>
+                                <p>Nilai KM = {{ $item->km_class }}</p>
+                                <p>Nilai RM = {{ $item->rm_class }}</p><br>
                                 @endforeach
                             </ul>
                         </div>
@@ -89,7 +70,7 @@
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
                             <ul>
                                 @foreach ($historiPengisian as $item)
-                                <li>{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</li>
+                                <li>{{ $item->created_at }} </li>
                                 @endforeach
                             </ul>
                         </div>
