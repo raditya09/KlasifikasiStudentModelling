@@ -89,7 +89,7 @@
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
                             <ul>
                                 @foreach ($historiPengisian as $item)
-                                <li>{{ $item->created_at }} </li>
+                                <li>{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</li>
                                 @endforeach
                             </ul>
                         </div>
