@@ -2,10 +2,10 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li>      
-        <h6><?php $user = Auth::user();
+        <h6 class="d-flex flex-column align-items-center"><?php $user = Auth::user();
           echo($user->nama_lengkap)?>
         </h6>
-        <span>
+        <span class="d-flex flex-column align-items-center">
           <?php if ($user->kelas_user == 1) {
             echo "Super Admin";
           } else {

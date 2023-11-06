@@ -6,8 +6,15 @@
         <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 120px; height: 120px;>
         </a><!-- End Profile Iamge Icon -->
         <!-- <h6> {{ Auth::user()->name }}</h6> -->
-        <h6 class="d-flex flex-column align-items-center">Raditya Arief Pratama</h6>
+        
+        <!-- <h6 class="d-flex flex-column align-items-center">Raditya Arief Pratama</h6>
+        <span class="d-flex flex-column align-items-center">Teknik Informatika</span> -->
+
+        <h6 class="d-flex flex-column align-items-center"><?php $user = Auth::user();
+          echo($user->nama_lengkap)?>
+        </h6>
         <span class="d-flex flex-column align-items-center">Teknik Informatika</span>
+
       </li>
       <li class="nav-item">
         <a id="sidebar-dashboard" class="nav-link collapsed" href="/dashboard">
