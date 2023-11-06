@@ -11980,18 +11980,3 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
-.hero-image {
-  background-image: url("../admin_backend/assets/img/bg_login.png");
-  background-color: #2c07d0;
-  /* height: 100%; */
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.hero-bg{
-  background-color: #2c07d0;
-}
-

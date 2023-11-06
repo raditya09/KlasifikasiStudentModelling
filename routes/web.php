@@ -39,6 +39,11 @@ Route::middleware(['class:3'])->group(function () {
         Route::get('instruction', 'UiController@instruction')->name('user.questionnaire.instruction');
         Route::get('check-questionnaire', 'UiController@checkQuestionnaire')->name('user.questionnaire.check');
         Route::get('closed-questionnaire', 'UiController@closedQuestionnaire')->name('user.questionnaire.closed');
+        Route::post('/profile/update', 'ProfileController@update'); 
+        Route::get('/profile/change-password', 'ProfileController@changePasswordForm')->name('profile.changePasswordForm');
+        Route::post('/profile/change-password', 'ProfileController@changePassword')->name('profile.changePassword');
+
+
     });
 });
 
@@ -60,6 +65,8 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::get('/hasil/cetak-pdf', 'AdminResultController@cetak_pdf')->name('userQuestionnaire.cetak');
         Route::post('/select-period', 'SelectPeriodController@update')->name('adminSelectPeriod');
         Route::post('/select-period/active', 'SelectPeriodController@active')->name('adminSelectPeriod.active');
+       
+
 
         // Route::post('listuser', [UserController::class, 'store']);
     });
