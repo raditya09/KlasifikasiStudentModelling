@@ -21,9 +21,9 @@
                 <div class="card info-card">
                     <div class="card-body">
                         <h5 class="card-title">Nilai KM</h5>
-                        <span class="pull-right">80</span>
+                        <span class="pull-right">50</span>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: $percentage %;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="63"></div>
                         </div>
                         <script>
                             // Script JavaScript dapat tetap sama
@@ -48,7 +48,7 @@
                             <h5 class="card-title">Nilai RM</h5>
                             <span class="pull-right">80</span>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="132"></div>
                             </div>
                             <script>
                                 // Script JavaScript dapat tetap sama
@@ -101,7 +101,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
-                            <p>Knowledge of Metacognitif (KM) adalah ..........</p>
+                            <p>Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.                             </p>
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->
@@ -112,7 +112,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan RM</h5>
                             <!-- Tambahkan penjelasan tentang RM di sini -->
-                            <p> Regulation of Metacognitif (RM) adalah............</p>
+                            <p> Regulation of Metacognitif (RM) merupakan kemampuan mengontrol pembelajaran, melakukan sesuatu atau melakukan perbaikan terhadap kesalahannya. Pembelajar mengatur kegiatan pembelajarannya dengan melibatkan perencanaan dan pengawasan terhadap aktivitas kognitif yang digunakan. Kemampuan metakognitif ini merupakan kunci bagi pengembangan berpikir kritis.</p>
                         </div>
                     </div>
                 </div><!-- End Penjelasan RM -->
