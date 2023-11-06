@@ -4,7 +4,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
-        <img src="{{ asset('frontend/assets/img/logo.png')}}" alt="">
+        <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="">
         <span>{{config('app.name')}}</span>
       </a>
 
