@@ -88,7 +88,21 @@
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
                             <ul>
                                 @foreach ($historiPengisian as $item)
-                                <li>{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</li>
+                                <li>
+                                    <div class="container-fluid row">
+                                        <div class="col-6">{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</div>
+                                        <div class="col-6">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
+                                            </div>
+                                            <div class="pt-1 d-flex justify-content-between"><span>Nilai KM</span> {{ $item->km_total }}</div>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $item->rm_total/140*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="140"></div>
+                                            </div>
+                                            <div class="pt-1 d-flex justify-content-between"><span>Nilai RM</span> {{ $item->rm_total }}</div>
+                                        </div>
+                                    </div>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
