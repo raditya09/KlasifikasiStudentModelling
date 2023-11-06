@@ -23,6 +23,7 @@ class QuestionnaireController extends Controller
         return view('backend.users_questionnaire', compact('kuesioners'));
     }
 
+
     public function store(Request $request)
     {
         $idUser = auth()->user()->id;
@@ -96,4 +97,12 @@ class QuestionnaireController extends Controller
 
         return redirect()->route('user.questionnaire.check');
     }
+
+    // public function check()
+    // {
+    //     $idUser = auth()->user()->id;
+    //     $historiPengisian = Hasil::where('id_user', $idUser)->get();
+
+    //     return view('backend.dashboard', compact('historiPengisian'));
+    // }
 }
