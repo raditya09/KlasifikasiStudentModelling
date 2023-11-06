@@ -21,9 +21,9 @@
                 <div class="card info-card">
                     <div class="card-body">
                         <h5 class="card-title">Nilai KM</h5>
-                        <span class="pull-right">50</span>
+                        <span class="pull-right">5</span>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: $percentage %;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="63"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <script>
                             // Script JavaScript dapat tetap sama
@@ -73,9 +73,10 @@
                             <h5 class="card-title">Rangkuman</h5>
                             <!-- Tambahkan rangkuman seperti "Low / Medium / High" -->
                             <ul>
-                                {{-- @foreach ($rangkuman as $item)
-                                <li>{{ $item->keterangan }}</li>
-                                @endforeach --}}
+                                @foreach ($historiPengisian as $item)
+                                <p>KM = {{ $item->km_class }}</p>
+                                <p>RM = {{ $item->rm_class }}</p><br>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -88,7 +89,7 @@
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
                             <ul>
                                 @foreach ($historiPengisian as $item)
-                                <li>{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</li>
+                                <li>{{ $item->created_at }} </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -101,7 +102,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
-                            <p>Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.                             </p>
+                            <p>Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.         </p>
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->
