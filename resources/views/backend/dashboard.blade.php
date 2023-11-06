@@ -86,11 +86,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
-                            <!-- Tambahkan tabel atau daftar histori pengisian kuesioner di sini -->
                             <ul>
-                                {{-- @foreach ($historiPengisian as $item)
-                                <li>{{ $item->tanggal }} - {{ $item->keterangan }}</li>
-                                @endforeach --}}
+                                @foreach ($historiPengisian as $item)
+                                <li>{{ $item->created_at }} - {{ $item->km_class }} / {{ $item->rm_class }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
