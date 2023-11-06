@@ -21,8 +21,15 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
-              <h2>Raditya Arief Pratama</h2>
-              <h3>Teknik Informatika</h3>
+              <h2>                      
+                @if(Auth::user())
+                {{ Auth::user()->nama_lengkap }}
+                @endif</h2>
+              <h3>
+                @if(Auth::user())
+                {{ Auth::user()->nim }}
+                @endif
+              </h3>
             </div>
           </div>
 
