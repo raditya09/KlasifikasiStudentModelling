@@ -3,11 +3,10 @@
     <ul class="sidebar-nav" id="sidebar-nav">
       <li>
         <a class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-        <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 120px; height: 120px;>
+        <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 120px; height: 120px;">
         </a><!-- End Profile Iamge Icon -->
-        <!-- <h6> {{ Auth::user()->name }}</h6> -->
         
-        <h6> class="d-flex flex-column align-items-center"><?php $user = Auth::user();
+        <h6 class="d-flex flex-column align-items-center"><?php $user = Auth::user();
           echo($user->nama_lengkap)?>
         </h6>
         <span class="d-flex flex-column align-items-center"><?php $user = Auth::user();

@@ -63,7 +63,7 @@ class ListUserController extends Controller
         $user->angkatan = $request->input('angkatan');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('email'));
-        $user->kelas_user = '1';
+        $user->kelas_user = '3';
         // Setel atribut-atribut lain yang perlu diisi
         $user->save();
 

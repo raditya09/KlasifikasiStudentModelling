@@ -1,7 +1,10 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-      <li>      
+      <li>
+        <a class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+          <img src="{{ asset('storage/' . Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 120px; height: 120px;">
+        </a><!-- End Profile Iamge Icon -->      
         <h6 class="d-flex flex-column align-items-center"><?php $user = Auth::user();
           echo($user->nama_lengkap)?>
         </h6>

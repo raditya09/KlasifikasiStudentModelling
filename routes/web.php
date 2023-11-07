@@ -65,6 +65,10 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::get('/hasil/cetak-pdf', 'AdminResultController@cetak_pdf')->name('userQuestionnaire.cetak');
         Route::post('/select-period', 'SelectPeriodController@update')->name('adminSelectPeriod');
         Route::post('/select-period/active', 'SelectPeriodController@active')->name('adminSelectPeriod.active');
+        Route::post('/admin-profile/update', 'AdminProfileController@update'); 
+        Route::get('/admin-profile/change-password', 'AdminProfileController@changePasswordForm')->name('admin-profile.changePasswordForm');
+        Route::post('/admin-profile/change-password', 'AdminProfileController@changePassword')->name('admin-profile.changePassword');
+
        
 
 

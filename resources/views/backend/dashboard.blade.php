@@ -23,7 +23,7 @@
                             <h5 class="card-title">Knowledge of Metacognitif (KM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="85"></div>
                             </div>
                             <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} </div>
                             @endforeach
@@ -39,7 +39,7 @@
                             <h5 class="card-title">Regulation of Metacognitif (RM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/132*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="132"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/132*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="175"></div>
                             </div>
                             <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
                             @endforeach
@@ -87,7 +87,7 @@
                             <small> <p>Keterangan Nilai KM:</p> </small>
                             <small> <p>KM High ≥ 63</p> </small>
                             <small> <p>KM Medium ≥ 42</p> </small>
-                            <small> <p>KM Low <42 </p> </small>
+                            <small> <p>KM Low < 42 </p> </small>
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->

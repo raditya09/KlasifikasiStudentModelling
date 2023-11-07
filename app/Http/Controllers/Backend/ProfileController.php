@@ -41,7 +41,7 @@ class ProfileController extends Controller
         }
         $user->update();
 
-        return redirect('/dashboard')->with('success', 'Profile updated successfully1');
+        return redirect('/dashboard')->with('success', 'Profile updated successfully');
     }
 
     public function changePassword(Request $request)

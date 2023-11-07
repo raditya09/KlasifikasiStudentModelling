@@ -98,7 +98,10 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">{{ __('E-Mail') }}</div>
-                    <div class="col-lg-9 col-md-8">radityaariefp@polije.ac.id</div>
+                    <div class="col-lg-9 col-md-8">                     
+                      @if(Auth::user())
+                      {{ Auth::user()->email }}
+                      @endif</div>
                   </div>
 
                 </div>
