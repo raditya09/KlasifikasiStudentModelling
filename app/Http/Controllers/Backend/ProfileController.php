@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $user->nim = $request->input('nim');
         $user->semester = $request->input('semester');
         $user->angkatan = $request->input('angkatan');
-        $user->foto = $imagePath;
+        $user->foto = $imagePath ?? null;
         $user->update();
 
         return redirect('/dashboard')->with('success', 'Profile updated successfully1');

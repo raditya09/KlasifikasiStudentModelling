@@ -7,8 +7,8 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    {{-- <li class="breadcrumb-item"><a href="/">Home</a></li> --}}
+                    {{-- <li class="breadcrumb-item active">Dashboard</li> --}}
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -16,52 +16,33 @@
         <section class="section dashboard">
             <div class="row">
 
-               <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
-               <div class="col-xxl-4 col-md-6">
-                <div class="card info-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Nilai KM</h5>
-                        <span class="pull-right">80</span>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <!-- Komponen 1: Hasil Nilai Kuesioner KM -->
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Knowledge of Metacognitif (KM) </h5>
+                            @foreach ($historiPengisian as $item)
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="68"></div>
+                            </div>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} </div>
+                            @endforeach
                         </div>
-                        <script>
-                            // Script JavaScript dapat tetap sama
-                            document.addEventListener("DOMContentLoaded", () => {
-                                let kmCounts = @json($kmCounts);
-                                let kmTotal = kmCounts.reduce(function(total, item) {
-                                    return total + item.total;
-                                }, 0);
-                                let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
-                                document.querySelector(".progress-bar").style.width = percentage + "%";
-                                document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
-                            });
-                        </script>
                     </div>
-                </div>
-            </div><!-- End Hasil Nilai Kuesioner KM -->
+                </div><!-- End Hasil Nilai Kuesioner KM -->
+
 
                 <!-- Komponen 2: Hasil Nilai Kuesioner RM -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
-                            <h5 class="card-title">Nilai RM</h5>
-                            <span class="pull-right">80</span>
+                            <h5 class="card-title">Regulation of Metacognitif (RM) </h5>
+                            @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/132*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="132"></div>
                             </div>
-                            <script>
-                                // Script JavaScript dapat tetap sama
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    let kmCounts = @json($kmCounts);
-                                    let kmTotal = kmCounts.reduce(function(total, item) {
-                                        return total + item.total;
-                                    }, 0);
-                                    let percentage = (kmTotal / (kmCounts.length * 100)) * 100;
-                                    document.querySelector(".progress-bar").style.width = percentage + "%";
-                                    document.querySelector(".progress-bar").setAttribute("aria-valuenow", percentage);
-                                });
-                            </script>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
+                            @endforeach
                         </div>
                     </div>
                 </div><!-- End Hasil Nilai Kuesioner RM -->
@@ -73,9 +54,10 @@
                             <h5 class="card-title">Rangkuman</h5>
                             <!-- Tambahkan rangkuman seperti "Low / Medium / High" -->
                             <ul>
-                                {{-- @foreach ($rangkuman as $item)
-                                <li>{{ $item->keterangan }}</li>
-                                @endforeach --}}
+                                @foreach ($historiPengisian as $item)
+                                <p>Nilai KM = {{ $item->km_class }}</p>
+                                <p>Nilai RM = {{ $item->rm_class }}</p><br>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -86,11 +68,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
-                            <!-- Tambahkan tabel atau daftar histori pengisian kuesioner di sini -->
                             <ul>
-                                {{-- @foreach ($historiPengisian as $item)
-                                <li>{{ $item->tanggal }} - {{ $item->keterangan }}</li>
-                                @endforeach --}}
+                                @foreach ($historiPengisian as $item)
+                                <li>{{ $item->created_at }} </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -102,7 +83,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
-                            <p>Knowledge of Metacognitif (KM) adalah ..........</p>
+                            <p>Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.  </p>
+                            <small> <p>Keterangan Nilai KM:</p> </small>
+                            <small> <p>KM High ≥ 63</p> </small>
+                            <small> <p>KM Medium ≥ 42</p> </small>
+                            <small> <p>KM Low <42 </p> </small>
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->
@@ -113,7 +98,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan RM</h5>
                             <!-- Tambahkan penjelasan tentang RM di sini -->
-                            <p> Regulation of Metacognitif (RM) adalah............</p>
+                            <p> Regulation of Metacognitif (RM) merupakan kemampuan mengontrol pembelajaran, melakukan sesuatu atau melakukan perbaikan terhadap kesalahannya. Pembelajar mengatur kegiatan pembelajarannya dengan melibatkan perencanaan dan pengawasan terhadap aktivitas kognitif yang digunakan. Kemampuan metakognitif ini merupakan kunci bagi pengembangan berpikir kritis.</p>
+                            <small> <p>Keterangan Nilai RM :</p> </small>
+                            <small> <p>RM High ≥ 132</p> </small>
+                            <small> <p>RM Medium ≥ 88</p> </small>
+                            <small> <p>RM Low <88 </p> </small>
                         </div>
                     </div>
                 </div><!-- End Penjelasan RM -->
