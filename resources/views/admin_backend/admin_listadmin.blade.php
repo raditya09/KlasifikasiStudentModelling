@@ -20,8 +20,8 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">List Admin</h6>
-                    <button class="btn btn-primary ellipsis right " id="addUserButton">Tambah Admin</button>
+                    <h6 class="m-0 font-weight-bold text-primary">List Admin</h6><br/>
+                    <button class="btn btn-primary ellipsis" data-bs-toggle="modal" data-bs-target="#exampleModal">+ Tambah Admin</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -31,8 +31,6 @@
                                     <th>No</th>
                                     <th>Nama Lengkap</th>
                                     <th>NIP</th>
-                                    <!-- <th>Semester</th>
-                                    <th>Angkatan</th> -->
                                     <th>E-Mail</th>
                                     <th>Role</th>
                                     <th>Aksi</th>
@@ -53,8 +51,15 @@
                                         } ?>
                                     </td>
                                     <td> 
-                                        <a href="Edit">Edit</a> 
-                                        <a href="Hapus">Hapus</a>
+                                        <button class="btn btn-outline-dark btn-sm edit-button" data-bs-toggle="modal" data-bs-target="#editModal" data-user='{{ json_encode($user) }}'>
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </button>
+                                        <span class="p-1"></span>
+                                        <form action="{{ route('adminListAdmin.destroy', [$user->id]) }}" class="d-inline delete-form" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-danger btn-sm mt-1 mt-sm-0"><i class="bi bi-trash"></i>Hapus</button>
+                                        </form>
                                     </td>
                                     <!-- Tambahkan kolom-kolom lain yang ingin Anda tampilkan -->
                                 </tr>
@@ -69,49 +74,79 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-            <script>
-                // Script untuk menampilkan kotak dialog ketika tombol diklik
-                document.getElementById('addUserButton').addEventListener('click', () => {
-                    Swal.fire({
-                        title: 'Tambah Admin Baru',
-                        html:
-                            '<input id="nama_lengkap" class="swal2-input" placeholder="Nama Lengkap">' +
-                            '<input id="nim" class="swal2-input" placeholder="NIP">' +
-                            '<input id="email" class="swal2-input" placeholder="Email">'+
-                            '<input id="password" class="swal2-input" placeholder="Password">',
-                        focusConfirm: false,
-                        preConfirm: () => {
-                            const nama_lengkap = Swal.getPopup().querySelector('#nama_lengkap').value;
-                            const nim = Swal.getPopup().querySelector('#nim').value;
-                            const email = Swal.getPopup().querySelector('#email').value;
-                            const password = Swal.getPopup().querySelector('#password').value;
-                            return { nama_lengkap: nama_lengkap, nim:nim, email: email, password:password };
-                        }
-                    }).then((result) => {
-                        if (result.isConfirmed && result.value.nama_lengkap && result.value.nim && result.value.email && result.value.password) {
-                            // Kirim data user ke server menggunakan AJAX atau formulir biasa
-                            // Contoh: Anda dapat menggunakan Axios untuk AJAX
-                            axios.post('/listadmin', {
-                                nama_lengkap: result.value.nama_lengkap,
-                                nip: result.value.nim,
-                                email: result.value.email,
-                                password: result.value.password,
-                                kelas_user: '2',
-                                _token: '{{ csrf_token() }}'
-                            })
-                            .then(() => {
-                                location.reload(); // Muat ulang halaman setelah menambahkan user
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                                Swal.fire('Error', 'Terjadi kesalahan saat menambahkan admin.', 'error');
-                            });
-                        }
-                    });
-                });
-            </script>
+            {{--! start modal create  --}}
+            <form action="{{ route('adminListAdmin.store') }}" method="POST" class="needs-validation" novalidate>
+                @csrf
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Admin</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group mb-4">
+                                    <label class="col-form-label" for="create-nama">Nama Admin</label>
+                                    <input type="text" class="form-control" id="create-nama" name="nama_lengkap" placeholder="Nama Lengkap">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-form-label" for="create-nim">NIP</label>
+                                    <input type="text" class="form-control" id="create-nim" name="nim" placeholder="NIP">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-form-label" for="create-email">E-mail</label>
+                                    <input type="email" class="form-control" id="create-email" name="email" placeholder="E-Mail">
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="col-form-label" for="create-password">Password</label>
+                                    <input type="password" class="form-control" id="create-password" name="password" placeholder="password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {{--! end modal create  --}}
 
+            {{--! start edit modal  --}}
+            <form method="POST" id="edit-form" action="{{ route('adminListAdmin.update', [$user->id]) }}" class="needs-validation" novalidate>
+                @csrf
+                @method('PUT')
+                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Admin</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group mb-4">
+                                        <label class="col-form-label" for="edit-nama">Nama Admin</label>
+                                        <input type="text" class="form-control" id="edit-nama" name="nama_lengkap" placeholder="Nama Lengkap">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-form-label" for="edit-nim">NIP</label>
+                                        <input type="text" class="form-control" id="edit-nim" name="nim" placeholder="NIP">
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-form-label" for="edit-email">E-mail</label>
+                                        <input type="email" class="form-control" id="edit-email" name="email" placeholder="E-Mail">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {{--! end edit modal --}}                                    
     </main><!-- End #main -->
 @endsection
 @section('script')
@@ -121,5 +156,36 @@
             $("#users-nav").addClass("show");
             $("#sidebar-item-listadmin").addClass("active");
         });
-    </script>
+
+        // edit periode
+        $('.edit-button').click(function () {
+            let user = $(this).data('user');
+            $('#edit-nama').val(user.nama_lengkap);
+            $('#edit-nim').val(user.nim);
+            $('#edit-email').val(user.email);
+            let formAction = "{{ route('adminListAdmin.update', [$user->id]) }}";
+            $('#edit-form').attr('action', formAction);
+        });
+
+        // hapus
+        $('.delete-form').click(function(event){
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Yakin untuk dihapus?',
+                    text: "Kamu tidak akan bisa mengembalikan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Ya, hapus ini!',
+                    cancelButtonText: 'Batalkan',
+                    reverseButtons: true
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).submit();
+                    }
+                })
+            });
+</script>
 @endsection
+

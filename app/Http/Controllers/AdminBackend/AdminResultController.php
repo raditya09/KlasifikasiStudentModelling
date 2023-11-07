@@ -16,7 +16,7 @@ class AdminResultController extends Controller
     {
         $results = Hasil::with('user')->with('periode')->get();
         $results = $results->map(function ($result) {
-            $result->formatted_created_at = Carbon::parse($result->created_at)->format('M d, Y');
+            $result->formatted_created_at = Carbon::parse($result->created_at)->format('d M Y');
             if ($result->periode->semester == 1) {
                 $result->periode->semester = 'Ganjil';
             } else {
@@ -33,7 +33,7 @@ class AdminResultController extends Controller
     public function show($id)
     {
         $result = Hasil::with('user')->findOrFail($id);
-        $result->formatted_created_at = Carbon::parse($result->created_at)->format('M d, Y');
+        $result->formatted_created_at = Carbon::parse($result->created_at)->format('d M Y');
         return view('admin_backend.admin_pdf_result', compact('result'));
     }
     public function cetak_pdf($id)

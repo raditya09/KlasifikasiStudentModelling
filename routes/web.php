@@ -34,8 +34,10 @@ Route::middleware(['class:3'])->group(function () {
         Route::resource('dashboard', 'DashboardController');
         Route::resource('profile', 'ProfileController');
         Route::resource('questionnaire', 'QuestionnaireController')->names('userQuestionnaire');
+        Route::resource('user-result', 'DashboardController')->names('userResult');
 
         // hanya tampilan
+        Route::get('/user-hasil/cetak-pdf', 'DashboardController@cetak_pdf')->name('userQuestionnaire.cetak');
         Route::get('instruction', 'UiController@instruction')->name('user.questionnaire.instruction');
         Route::get('check-questionnaire', 'UiController@checkQuestionnaire')->name('user.questionnaire.check');
         Route::get('closed-questionnaire', 'UiController@closedQuestionnaire')->name('user.questionnaire.closed');
@@ -68,6 +70,8 @@ Route::middleware(['class:1,2'])->group(function () {
         Route::post('/admin-profile/update', 'AdminProfileController@update'); 
         Route::get('/admin-profile/change-password', 'AdminProfileController@changePasswordForm')->name('admin-profile.changePasswordForm');
         Route::post('/admin-profile/change-password', 'AdminProfileController@changePassword')->name('admin-profile.changePassword');
+        Route::post('/listadmin/add', 'ListAdminController@create'); 
+       
 
        
 

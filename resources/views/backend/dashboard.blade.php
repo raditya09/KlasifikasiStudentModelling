@@ -51,14 +51,14 @@
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
-                            <h5 class="card-title">Rangkuman</h5>
+                            <h5 class="card-title">Rangkuman Hasil</h5>
                             <!-- Tambahkan rangkuman seperti "Low / Medium / High" -->
                             <ul>
                                 @foreach ($historiPengisian as $item)
                                 <p>Nilai KM = {{ $item->km_class }}</p>
                                 <p>Nilai RM = {{ $item->rm_class }}</p><br>
                                 @endforeach
-                            </ul>
+                            </ul>  
                         </div>
                     </div>
                 </div><!-- End Rangkuman -->
@@ -68,11 +68,38 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Histori Pengisian Kuesioner</h5>
-                            <ul>
+                            <!-- <ul>
                                 @foreach ($historiPengisian as $item)
                                 <li>{{ $item->created_at }} </li>
                                 @endforeach
-                            </ul>
+                            </ul> -->
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="table-light">
+                                        <th>No</th>
+                                        <th>Tanggal</th>
+                                        <th>Periode</th>
+                                        <th>KM</th>
+                                        <th>RM</th>
+                                        <th>Aksi</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i=1;?>
+                                        @foreach ($results as $result)
+                                            <tr>
+                                                <td><?php echo $i;?></td>
+                                                <td>{{ $result->formatted_created_at }}</td>
+                                                <td>{{ $result->periode->semester.' '.$result->periode->tahun }}</td>
+                                                <td>{{ $result->km_class }}</td>
+                                                <td>{{ $result->rm_class }}</td>
+                                                <td><a href="{{ route('userResult.show', ['user_result' => $result->id]) }}" class="btn btn-primary btn-sm">Download</a></td>
+                                            </tr>
+                                            <?php $i++;?>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div><!-- End Histori Pengisian Kuesioner -->

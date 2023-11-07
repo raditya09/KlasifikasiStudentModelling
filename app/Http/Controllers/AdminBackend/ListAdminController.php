@@ -40,30 +40,37 @@ class ListAdminController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+
+    public function store(Request $request)
     {
-        return User::create([
-            'nama_lengkap' => $data['nama_lengkap'],
-            'nim' => $data['nim'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        User::create([
+            'nama_lengkap' =>$request->nama_lengkap,
+            'nim' => $request->nim,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'kelas_user' => '2',
         ]);
+        return redirect()->route('adminListAdmin.index')->with('success', 'Admin baru berhasil dibuat');
     }
- 
-    //  public function store(Request $request)
-    //  {
-    //      $user = new User();
-    //      $user->nama_lengkap = $request->input('nama_lengkap');
-    //      $user->nim = $request->input('nim');
-    //      $user->semester = $request->input('semester');
-    //      $user->angkatan = $request->input('angkatan');
-    //      $user->email = $request->input('email');
-    //      $user->password = Hash::make($request->input('email'));
-    //      $user->kelas_user = '2';
-    //      // Setel atribut-atribut lain yang perlu diisi
-    //      $user->save();
- 
-    //      return response()->json(['message' => 'User ditambahkan'], 201);
-    //  }
+
+    public function update(Request $request, $id)
+    {
+        $nama_lengkap = $request->nama_lengkap;
+        $nim = $request->nim;
+        $email = $request->email;
+        $user = User::findOrFail($id);
+        $user->nama_lengkap = $nama_lengkap;
+        $user->nim = $nim;
+        $user->email = $email;
+        $user->update();
+        return redirect()->route('adminListAdmin.index')->with('success', 'Admin tersebut telah diubah');
+    }
+
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('adminListAdmin.index')->with('success', 'Admin tersebut telah dihapus');
+    }
 }
