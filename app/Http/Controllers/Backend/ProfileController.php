@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'angkatan' => 'required',
             'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+        $imagePath = null;
         if ($request->hasFile('profile_image')) {
             $image = $request->file('profile_image');
             $imagePath = $image->store('images', 'public');
@@ -36,7 +36,9 @@ class ProfileController extends Controller
         $user->nim = $request->input('nim');
         $user->semester = $request->input('semester');
         $user->angkatan = $request->input('angkatan');
-        $user->foto = $imagePath ?? null;
+        if ($imagePath != null) {
+            $user->foto = $imagePath;
+        }
         $user->update();
 
         return redirect('/dashboard')->with('success', 'Profile updated successfully1');
