@@ -102,7 +102,7 @@
                             <small> <p>Keterangan Nilai RM :</p> </small>
                             <small> <p>RM High ≥ 132</p> </small>
                             <small> <p>RM Medium ≥ 88</p> </small>
-                            <small> <p>RM Low <88 </p> </small>
+                            <small> <p>RM Low < 88 </p> </small>
                         </div>
                     </div>
                 </div><!-- End Penjelasan RM -->
