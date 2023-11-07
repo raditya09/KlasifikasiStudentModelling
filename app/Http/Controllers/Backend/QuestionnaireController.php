@@ -69,9 +69,9 @@ class QuestionnaireController extends Controller
 
         $rmTotal =  $totalsPerGroup[4] +  $totalsPerGroup[5] + $totalsPerGroup[6] + $totalsPerGroup[7] + $totalsPerGroup[8];
         $rmClass = null;
-        if ($rmTotal >= 63) {
+        if ($rmTotal >= 132) {
             $rmClass = 'High';
-        } else if ($rmTotal >= 42) {
+        } else if ($rmTotal >= 88) {
             $rmClass = 'Medium';
         } else {
             $rmClass = 'Low';
