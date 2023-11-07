@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Adminbackend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hasil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 class ListUserController extends Controller
 {
     //
@@ -44,8 +46,7 @@ class ListUserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
+        Hasil::where('id_user', $id)->delete();
         return redirect()->route('adminListUser.index')->with('success', 'User tersebut telah dihapus');
     }
-
-
 }
