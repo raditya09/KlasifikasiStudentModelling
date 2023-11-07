@@ -157,7 +157,7 @@
             $("#sidebar-item-listadmin").addClass("active");
         });
 
-        // edit periode
+        // edit user
         $('.edit-button').click(function () {
             let user = $(this).data('user');
             $('#edit-nama').val(user.nama_lengkap);
@@ -167,7 +167,7 @@
             $('#edit-form').attr('action', formAction);
         });
 
-        // hapus
+        // hapus user
         $('.delete-form').click(function(event){
                 event.preventDefault();
                 Swal.fire({
