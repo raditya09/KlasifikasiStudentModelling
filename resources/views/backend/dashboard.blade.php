@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
-                            <p>Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.  </p>
+                            <p class="justify">Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.  </p>
                             <small> <p>Keterangan Nilai KM:</p> </small>
                             <small> <p>KM High ≥ 63</p> </small>
                             <small> <p>KM Medium ≥ 42</p> </small>
@@ -98,7 +98,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan RM</h5>
                             <!-- Tambahkan penjelasan tentang RM di sini -->
-                            <p> Regulation of Metacognitif (RM) merupakan kemampuan mengontrol pembelajaran, melakukan sesuatu atau melakukan perbaikan terhadap kesalahannya. Pembelajar mengatur kegiatan pembelajarannya dengan melibatkan perencanaan dan pengawasan terhadap aktivitas kognitif yang digunakan. Kemampuan metakognitif ini merupakan kunci bagi pengembangan berpikir kritis.</p>
+                            <p class="justify"> Regulation of Metacognitif (RM) merupakan kemampuan mengontrol pembelajaran, melakukan sesuatu atau melakukan perbaikan terhadap kesalahannya. Pembelajar mengatur kegiatan pembelajarannya dengan melibatkan perencanaan dan pengawasan terhadap aktivitas kognitif yang digunakan. Kemampuan metakognitif ini merupakan kunci bagi pengembangan berpikir kritis.</p>
                             <small> <p>Keterangan Nilai RM :</p> </small>
                             <small> <p>RM High ≥ 132</p> </small>
                             <small> <p>RM Medium ≥ 88</p> </small>
