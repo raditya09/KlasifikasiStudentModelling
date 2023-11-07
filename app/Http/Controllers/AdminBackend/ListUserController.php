@@ -14,7 +14,7 @@ class ListUserController extends Controller
     //
     public function index()
     {
-        $users = User::all()->where('kelas_user', '3');;
+        $users = User::all()->where('kelas_user', '3');
         return view('admin_backend.admin_listuser', compact('users'));
     }
     // /**
@@ -23,36 +23,6 @@ class ListUserController extends Controller
     //  * @param  array  $data
     //  * @return \Illuminate\Contracts\Validation\Validator
     //  */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'nama_lengkap' => ['required', 'string', 'max:255'],
-    //         'nim' => ['required', 'string', 'max:20'],
-    //         'semester' => ['required', 'integer', 'max:12'],
-    //         'angkatan' => ['required', 'integer', 'max:2250'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-    // }
-
-    // /**
-    //  * Create a new user instance after a valid registration.
-    //  *
-    //  * @param  array  $data
-    //  * @return \App\Models\User
-    //  */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'nama_lengkap' => $data['nama_lengkap'],
-    //         'nim' => $data['nim'],
-    //         'semester' => $data['semester'],
-    //         'angkatan' => $data['angkatan'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'kelas_user' => '1',
-    //     ]);
-    // }
 
     public function store(Request $request)
     {
@@ -69,4 +39,13 @@ class ListUserController extends Controller
 
         return response()->json(['message' => 'User ditambahkan'], 201);
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('adminListUser.index')->with('success', 'User tersebut telah dihapus');
+    }
+
+
 }

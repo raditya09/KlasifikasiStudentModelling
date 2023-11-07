@@ -30,7 +30,7 @@ class DashboardController extends Controller
         $idUser = auth()->user()->id;
         $historiPengisian = Hasil::where('id_user', $idUser)->where('id_periode', $checkPeriod->id_periode)->get();
         
-        $results = Hasil::with('user')->with('periode')->get();
+        $results = Hasil::with('user')->with('periode')->where('id_user', $idUser)->get();
         $results = $results->map(function ($result) {
             $result->formatted_created_at = Carbon::parse($result->created_at)->format('d M Y');
             if ($result->periode->semester == 1) {

@@ -33,6 +33,7 @@
                                 <th>Angkatan</th>
                                 <th>E-Mail</th>
                                 <th>Role</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,13 @@
                                 <td><?php if ($user->kelas_user == 3) {
                                             echo "Mahasiswa";
                                         } ?>
+                                </td>
+                                <td>
+                                    <form action="{{ route('adminListUser.destroy', [$user->id]) }}" class="d-inline delete-form" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger btn-sm mt-1 mt-sm-0"><i class="bi bi-trash"></i>Hapus</button>
+                                    </form>
                                 </td>
                                 <!-- Tambahkan kolom-kolom lain yang ingin Anda tampilkan -->
                             </tr>
@@ -72,5 +80,25 @@
             $("#users-nav").addClass("show");
             $("#sidebar-item-listuser").addClass("active");
         });
+
+        // hapus user
+        $('.delete-form').click(function(event){
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Yakin untuk dihapus?',
+                    text: "Kamu tidak akan bisa mengembalikan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Ya, hapus ini!',
+                    cancelButtonText: 'Batalkan',
+                    reverseButtons: true
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        $(this).submit();
+                    }
+                })
+            });
     </script>
 @endsection
