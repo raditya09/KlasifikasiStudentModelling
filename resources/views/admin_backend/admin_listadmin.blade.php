@@ -55,7 +55,7 @@
                                             <i class="bi bi-pencil"></i> Edit
                                         </button>
                                         <span class="p-1"></span>
-                                        <form action="{{ route('adminListAdmin.destroy', [$user->id]) }}" class="d-inline delete-form" method="POST">
+                                        <form action="{{ route('adminListAdmin.destroy', ['listadmin'=>$user->id]) }}" class="d-inline delete-form" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger btn-sm mt-1 mt-sm-0"><i class="bi bi-trash"></i>Hapus</button>
@@ -113,7 +113,7 @@
             {{--! end modal create  --}}
 
             {{--! start edit modal  --}}
-            <form method="POST" id="edit-form" action="{{ route('adminListAdmin.update', [$user->id]) }}" class="needs-validation" novalidate>
+            <form method="POST" id="edit-form" action="{{ route('adminListAdmin.update',['listadmin' => '0']) }}" class="needs-validation" novalidate>
                 @csrf
                 @method('PUT')
                 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -163,7 +163,7 @@
             $('#edit-nama').val(user.nama_lengkap);
             $('#edit-nim').val(user.nim);
             $('#edit-email').val(user.email);
-            let formAction = "{{ route('adminListAdmin.update', [$user->id]) }}";
+            let formAction = "{{ route('adminListAdmin.update', ['listadmin' => 'masuk_sini']) }}".replace('masuk_sini', user.id);
             $('#edit-form').attr('action', formAction);
         });
 
