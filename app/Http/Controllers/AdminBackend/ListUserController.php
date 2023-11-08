@@ -48,5 +48,5 @@ class ListUserController extends Controller
         $user->delete();
         Hasil::where('id_user', $id)->delete();
         return redirect()->route('adminListUser.index')->with('success', 'User tersebut telah dihapus');
-    }
+        }
 }

@@ -23,7 +23,7 @@
                             <h5 class="card-title">Knowledge of Metacognitif (KM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/68*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="85"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/85*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="85"></div>
                             </div>
                             <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} </div>
                             @endforeach
@@ -39,7 +39,7 @@
                             <h5 class="card-title">Regulation of Metacognitif (RM) </h5>
                             @foreach ($historiPengisian as $item)
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/132*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="175"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/175*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="175"></div>
                             </div>
                             <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
                             @endforeach
@@ -111,10 +111,10 @@
                             <h5 class="card-title">Penjelasan KM</h5>
                             <!-- Tambahkan penjelasan tentang KM di sini -->
                             <p class="justify">Knowledge of Metacognitif (KM) merupakan pengetahun individu terhadap kognitifnya. Knowledge of metacognitive terdiri dari pengetahuan prosedural yang merupakan pengetahuan bagaimana seseorang melakukan sesuatu, pengetahuan deklaratif mencakup pengetahuan tentang kegiatan yang akan dilakukan sebagai pembelajar dan apa yang mempengaruhi kegiatannya, pengdeklaratif, dan kondisional, serta pengetahuan kondisional yakni pengetahuan tentang kapan dan mengapa menggunakan pengetahuan prosedural dan deklaratif.  </p>
-                            <small> <p>Keterangan Nilai KM:</p> </small>
+                            {{-- <small> <p>Keterangan Nilai KM:</p> </small>
                             <small> <p>KM High ≥ 63</p> </small>
                             <small> <p>KM Medium ≥ 42</p> </small>
-                            <small> <p>KM Low < 42 </p> </small>
+                            <small> <p>KM Low < 42 </p> </small> --}}
                         </div>
                     </div>
                 </div><!-- End Penjelasan KM -->
@@ -126,10 +126,10 @@
                             <h5 class="card-title">Penjelasan RM</h5>
                             <!-- Tambahkan penjelasan tentang RM di sini -->
                             <p class="justify"> Regulation of Metacognitif (RM) merupakan kemampuan mengontrol pembelajaran, melakukan sesuatu atau melakukan perbaikan terhadap kesalahannya. Pembelajar mengatur kegiatan pembelajarannya dengan melibatkan perencanaan dan pengawasan terhadap aktivitas kognitif yang digunakan. Kemampuan metakognitif ini merupakan kunci bagi pengembangan berpikir kritis.</p>
-                            <small> <p>Keterangan Nilai RM :</p> </small>
+                            {{-- <small> <p>Keterangan Nilai RM :</p> </small>
                             <small> <p>RM High ≥ 132</p> </small>
                             <small> <p>RM Medium ≥ 88</p> </small>
-                            <small> <p>RM Low < 88 </p> </small>
+                            <small> <p>RM Low < 88 </p> </small> --}}
                         </div>
                     </div>
                 </div><!-- End Penjelasan RM -->
