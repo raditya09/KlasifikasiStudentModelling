@@ -50,11 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nama_lengkap' => ['required', 'string', 'max:255'],
+            'nama_lengkap' => ['required', 'string', 'max:255', 'regex:/^[A-Za-z\s]+$/'],
             'nim' => ['required', 'string', 'max:20'],
             'semester' => ['required', 'integer', 'max:12'],
-            'angkatan' => ['required', 'integer', 'max:2250'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'angkatan' => ['required', 'integer', 'min:2021', 'max:2023'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', function ($attribute, $value, $fail) {
+                if (!in_array(substr(strrchr($value, "@"), 1), ['polije.ac.id', 'student.polije.ac.id'])) {
+                    $fail('Atribut ' . $attribute . ' harus berdomain @polije.ac.id atau @student.polije.ac.id');
+                }
+            }],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -74,10 +78,10 @@ class RegisterController extends Controller
             'angkatan' => $data['angkatan'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
+            // 'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
             'kelas_user' => '3',
-            'foto' => 'images/BoeaT0jCWccM0FW9FxE1HS1ej5J61n99JbEBzWlS.jpg',
-            
+            'foto' => 'images/defaultProfile.jpg',
+
         ]);
     }
 }
