@@ -78,9 +78,9 @@ class RegisterController extends Controller
             'angkatan' => $data['angkatan'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
+            // 'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
             'kelas_user' => '3',
-            'foto' => 'images/BoeaT0jCWccM0FW9FxE1HS1ej5J61n99JbEBzWlS.jpg',
+            'foto' => 'images/defaultProfile.jpg',
 
         ]);
     }
