@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminBackend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Hasil;
 use App\Models\Periode;
 use App\Models\PilihPeriode;
 use Illuminate\Http\Request;
@@ -75,7 +76,11 @@ class AdminPeriodController extends Controller
     public function destroy($id)
     {
         $period = Periode::findOrFail($id);
-        $period->delete();
-        return redirect()->route('adminPeriod.index')->with('success', 'Periode tersebut telah dihapus');
+        $result = Hasil::where('id_periode', $id)->first();
+        if (empty($result)) {
+            $period->delete();
+            return redirect()->route('adminPeriod.index')->with('success', 'Periode tersebut telah dihapus');
+        }
+        return redirect()->route('adminPeriod.index')->with('error', 'Gagal, periode tersebut memiliki hasil kuesioner');
     }
 }

@@ -1,5 +1,10 @@
 @extends('admin_backend/layouts.template')
 @section('content')
+    @php
+        $thisYear = date("Y");
+        $lastYear = $thisYear-1;
+        $nextYear = $thisYear + 1;
+    @endphp
     <main id="main" class="main">
         <div class="bg-white p-3">
             {{--! start header  --}}
@@ -52,18 +57,18 @@
                                             <i class="bi bi-pencil"></i> Edit
                                         </button>
                                         <span class="p-1"></span>
-                                        <form action="{{ route('adminPeriod.destroy', ['admin_period'=>$period->id]) }}" class="d-inline delete-form" method="POST">
+                                        <form action="{{ route('adminPeriod.destroy', ['admin_period'=>$period->id]) }}" data-id="{{ $period->id }}" class="d-inline delete-form" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                        <button class="btn btn-outline-danger btn-sm mt-1 mt-sm-0"><i class="bi bi-trash"></i>Hapus</button>
+                                            <button id="hapus" class="btn btn-outline-danger btn-sm mt-1 mt-sm-0"><i class="bi bi-trash"></i>Hapus</button>   
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{ route('adminSelectPeriod') }}" method="POST" class="edit-periode">
+                                        <form action="{{ route('adminSelectPeriod') }}" data-id="{{ $period->id }}" method="POST" class="edit-periode">
                                             @csrf
                                             <input type="text" class="form-control d-none" name="id_periode" value="{{ $period->id }}">
                                             @if ($period->id==$selectPeriod->id_periode)
-                                                <button type="submit" class="btn btn-primary btn-sm" disabled><i class="bi bi-check-all bi-lg me-1"></i> Pilih</button>
+                                                <button type="button"  class="btn btn-primary btn-sm"><i class="bi bi-check-all bi-lg me-1"></i> Pilih</button>
                                             @else
                                                 <button type="submit" class="btn btn-light btn-sm border"><i class="bi bi-check-lg me-1"></i> Pilih</button>
                                             @endif
@@ -95,18 +100,22 @@
                                         <option value="2">2. Genap</option>
                                     </select>
                                 </div>
-                                @php
-                                    $thisYear = date("Y"); // Mengambil tahun saat ini
-                                    $nextYear = $thisYear + 1;
-                                @endphp
                                 <div class="form-group mb-4">
                                     <label class="col-form-label" for="create-tahun_awal">Tahun awal:</label>
-                                    <input type="number" class="form-control" id="create-tahun_awal" name="tahun_awal" min="2000" max="2050" value="{{ $thisYear }}">
+                                    <select class="form-select" name="tahun_awal" id="create-tahun_awal">
+                                        <option value="{{ $lastYear }}">{{ $lastYear }}</option>
+                                        <option value="{{ $thisYear }}" selected>{{ $thisYear }}</option>
+                                    </select>
+                                    {{-- <input type="number" class="form-control" id="create-tahun_awal" name="tahun_awal" min="2000" max="2050" value="{{ $thisYear }}"> --}}
                                     <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill"></i> Tahun tidak valid</div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="col-form-label" for="create-tahun_akhir">Tahun akhir:</label>
-                                    <input type="number" class="form-control" id="create-tahun_akhir" name="tahun_akhir" min="2000" max="2050" value="{{ $nextYear }}">
+                                    <select class="form-select" id="create-tahun_akhir" name="tahun_akhir">
+                                        <option value="{{ $thisYear }}">{{ $thisYear }}</option>
+                                        <option value="{{ $nextYear }}" selected>{{ $nextYear }}</option>
+                                    </select>
+                                    {{-- <input type="number" class="form-control" id="create-tahun_akhir" name="tahun_akhir" min="2000" max="2050" value="{{ $nextYear }}"> --}}
                                     <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill"></i> Tahun tidak valid</div>
                                 </div>
                             </div>
@@ -139,17 +148,21 @@
                                         <option value="2">2. Genap</option>
                                     </select>
                                 </div>
-                                @php
-                                    $thisYear = date("Y"); // Mengambil tahun saat ini
-                                    $nextYear = $thisYear + 1;
-                                @endphp
                                 <div class="form-group mb-4">
                                     <label class="col-form-label" for="edit-tahun_awal">Tahun awal:</label>
+                                    {{-- <select class="form-select" id="edit-tahun_awal" name="tahun_awal">
+                                        <option value="{{ $lastYear }}">{{ $lastYear }}</option>
+                                        <option value="{{ $thisYear }}" selected>{{ $thisYear }}</option>
+                                    </select> --}}
                                     <input type="number" class="form-control" id="edit-tahun_awal" name="tahun_awal" min="2000" max="2050">
                                     <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill"></i> Tahun tidak valid</div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="col-form-label" for="edit-tahun_akhir">Tahun akhir:</label>
+                                    {{-- <select class="form-select" id="edit-tahun_akhir" name="tahun_akhir">
+                                        <option value="{{ $thisYear }}">{{ $thisYear }}</option>
+                                        <option value="{{ $nextYear }}" selected>{{ $nextYear }}</option>
+                                    </select> --}}
                                     <input type="number" class="form-control" id="edit-tahun_akhir" name="tahun_akhir" min="2000" max="2050" >
                                     <div class="invalid-feedback"><i class="bi bi-exclamation-circle-fill"></i> Tahun tidak valid</div>
                                 </div>
@@ -236,33 +249,55 @@
 
     // hapus
     $('.delete-form').click(function(event){
-            event.preventDefault();
+        event.preventDefault();
+        if($(this).data('id')=={{ $selectPeriod->id_periode }}){
             Swal.fire({
-                title: 'Yakin untuk dihapus?',
-                text: "Kamu tidak akan bisa mengembalikan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#dc3545',
-                cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Ya, hapus ini!',
-                cancelButtonText: 'Batalkan',
-                reverseButtons: true
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this).submit();
-                }
-            })
-        });
+                icon: "error",
+                title: "Oops...",
+                text: "Periode yang terpilih tidak bisa dihapus!",
+                confirmButtonColor: '#0d6efd',
+                confirmButtonText: 'Tutup',
+            });
+        }
+        else{
+            Swal.fire({
+            title: 'Yakin untuk dihapus?',
+            text: "Kamu tidak akan bisa mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Ya, hapus ini!',
+            cancelButtonText: 'Batalkan',
+            reverseButtons: true
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).submit();
+            }
+        })
+        }
+    });
+
 
         // ubah periode terpilih
     $('.edit-periode').click(function(event){
-            event.preventDefault();
+        event.preventDefault();
+        event.preventDefault();
+        if($(this).data('id')=={{ $selectPeriod->id_periode }}){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Periode tersebut sudah dipilih!",
+                confirmButtonColor: '#0d6efd',
+                confirmButtonText: 'Tutup',
+            });
+        }else{
             Swal.fire({
                 title: 'Ganti Periode?',
                 text: "Periode baru akan dibuka, ini akan membuat user bisa mengisi kuesioner baru!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#ffc107',
+                confirmButtonColor: '#0d6efd',
                 cancelButtonColor: '#6c757d',
                 confirmButtonText: 'Ya, ubah periode!',
                 cancelButtonText: 'Batalkan',
@@ -271,10 +306,31 @@
                 if (result.isConfirmed) {
                     $(this).submit();
                 }
-            })
-        });
+            });
+        }
+    });
     $(document).ready(function() {
         $("#sidebar-period").removeClass("collapsed");
+        firstYear($('#create-tahun_awal'), $('#create-tahun_akhir'));
+        secondYear($('#create-tahun_akhir'), $('#create-tahun_awal'));
+        firstYear($('#edit-tahun_awal'), $('#edit-tahun_akhir'));
+        secondYear($('#edit-tahun_akhir'), $('#edit-tahun_awal'));
     });
+
+    // event select year
+    function firstYear($selectTahunAwal, $selectTahunAkhir) {
+        $selectTahunAwal.on('change', function() {
+            const selectedValue = $selectTahunAwal.val();
+            $selectTahunAkhir.val(parseInt(selectedValue)+1);
+        });
+    }
+
+    function secondYear($selectTahunAwal, $selectTahunAkhir) {
+        $selectTahunAwal.on('change', function() {
+            const selectedValue = $selectTahunAwal.val();
+            $selectTahunAkhir.val(parseInt(selectedValue)-1);
+        });
+    }
+
 </script>
 @endsection
