@@ -24,6 +24,7 @@ class User extends Authenticatable
         'angkatan',
         'email',
         'password',
+        'foto',
         'kelas_user',
         'foto',
     ];

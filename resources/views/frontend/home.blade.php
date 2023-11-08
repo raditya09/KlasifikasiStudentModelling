@@ -453,7 +453,7 @@
                 <div class="info-box">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Alamat</h3>
-                  <p>Jalan gatot Subroto No. 2<br>Nganjuk, Jawa Timur 64411</p>
+                  <p>Jalan Gatot Subroto No. 2<br>Nganjuk, Jawa Timur 64411</p>
                 </div>
               </div>
               

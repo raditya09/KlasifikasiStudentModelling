@@ -51,7 +51,7 @@
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
-                            <h5 class="card-title">Rangkuman Hasil</h5>
+                            <h5 class="card-title">Kategori Hasil</h5>
                             <!-- Tambahkan rangkuman seperti "Low / Medium / High" -->
                             <ul>
                                 @foreach ($historiPengisian as $item)
@@ -82,7 +82,7 @@
                                         <th>Periode</th>
                                         <th>KM</th>
                                         <th>RM</th>
-                                        <th>Aksi</th>
+                                        <th>Detail Hasil</th>
                                     </thead>
                                     <tbody>
                                         <?php $i=1;?>

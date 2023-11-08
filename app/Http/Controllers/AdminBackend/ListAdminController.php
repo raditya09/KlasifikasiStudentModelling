@@ -48,7 +48,8 @@ class ListAdminController extends Controller
             'nim' => $request->nim,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'kelas_user' => '2',
+            'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
+            'kelas_user' => '2'
         ]);
         return redirect()->route('adminListAdmin.index')->with('success', 'Admin baru berhasil dibuat');
     }

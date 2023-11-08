@@ -47,7 +47,7 @@
       <li class="nav-item">
         <a id="sidebar-profile" class="nav-link collapsed" href="{{ route('adminProfile.index')}}">
           <i class="bi bi-person-badge-fill"></i>
-          <span>Profile</span>
+          <span>Profil</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

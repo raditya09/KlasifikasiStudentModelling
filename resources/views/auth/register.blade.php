@@ -6,7 +6,6 @@
         <div class="col-lg-6 square-size">
             <div class="card">
                 <!-- <div class="card-header">{{ __('Register') }}</div> -->
-                
                 <div class="card-body">
                     <h3 class="fw-bolder">Buat Akunmu</h3><br>
 
@@ -59,7 +58,7 @@
                             <label for="angkatan" class="col-md-4 col-form-label text-md-end">{{ __('Angkatan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="angkatan" type="text"  placeholder="2021" class="form-control @error('angkatan') is-invalid @enderror" name="angkatan" value="{{ old('angkatan') }}" required autocomplete="semester">
+                                <input id="angkatan" type="number"  min="2021" max="<?php echo date('Y'); ?>" placeholder="2021" class="form-control @error('angkatan') is-invalid @enderror" name="angkatan" value="{{ old('angkatan') }}" required autocomplete="semester">
 
                                 @error('angkatan')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +72,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text"  placeholder="xxxx@polije.ac.id" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email"  placeholder="xxxx@polije.ac.id" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -142,3 +141,5 @@
     </div>
 </div>
 @endsection
+
+
