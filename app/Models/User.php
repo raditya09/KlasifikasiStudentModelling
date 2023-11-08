@@ -25,7 +25,10 @@ class User extends Authenticatable
         'email',
         'password',
         'kelas_user',
+        'foto' => 'images/BoeaT0jCWccM0FW9FxE1HS1ej5J61n99JbEBzWlS.jpg',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
