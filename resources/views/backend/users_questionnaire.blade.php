@@ -13,7 +13,7 @@
 
         {{--! start fill  --}}
         
-        <form action="{{ route('userQuestionnaire.store') }}" method="POST" class="needs-validation" novalidate>
+        <form action="{{ route('userQuestionnaire.store') }}" id="questionnaireForm" method="POST" class="needs-validation" novalidate>
             @csrf
             @foreach ($kuesioners as $index => $kuesioner)
                 <div class="mb-3 visually-hidden">
@@ -62,6 +62,35 @@
 <script>
    $(document).ready(function() {
        $("#sidebar-questionnaire").removeClass("collapsed");
+
+        const form = $("#questionnaireForm");
+
+        form.submit(function(event) {
+            let isValid = true;
+
+            form.find("input[type='radio']").each(function() {
+                const groupName = $(this).attr("name");
+                if (!form.find(`input[name='${groupName}']:checked`).length) {
+                    isValid = false;
+                    $(this).siblings(".invalid-feedback").show();
+                }
+            });
+
+            if (!isValid) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Isi Semua Data",
+                    text: "Terdapat kuesioner yang masih belum diisi",
+                    confirmButtonColor: '#0d6efd',
+                    confirmButtonText: 'Tutup',
+                });
+            }
+        });
+
+        // Hide the invalid feedback when a radio button is clicked
+        form.find("input[type='radio']").change(function() {
+            $(this).siblings(".invalid-feedback").hide();
+        });
    });
 </script>
 @endsection

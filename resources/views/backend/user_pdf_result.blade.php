@@ -24,31 +24,30 @@
 <body class="bg-white">
 
     <div class="container py-5"> 
-        <div class="row pb-1">
-            <div class="col-4 col-sm-3 col-md-2" style="font-weight: bold;">Tanggal Pengisian</div>
-            <div class="col-1" style="font-weight: bold">:</div>
-            <div class="col-7 col-sm-8 col-md-9">{{ $result->formatted_created_at }}</div>
-        </div>
-        <div class="row pb-1">
-            <div class="col-4 col-sm-3 col-md-2" style="font-weight: bold;">Nama</div>
-            <div class="col-1" style="font-weight: bold">:</div>
-            <div class="col-7 col-sm-8 col-md-9">{{ $result->user->nama_lengkap }}</div>
-        </div>
-        <div class="row pb-1">
-            <div class="col-4 col-sm-3 col-md-2" style="font-weight: bold;">Nim</div>
-            <div class="col-1" style="font-weight: bold">:</div>
-            <div class="col-7 col-sm-8 col-md-9">{{ $result->user->nim }}</div>
-        </div>
-        <div class="row pb-1">
-            <div class="col-4 col-sm-3 col-md-2" style="font-weight: bold;">Golongan</div>
-            <div class="col-1" style="font-weight: bold">:</div>
-            <div class="col-7 col-sm-8 col-md-9">{{ $result->user->kelas_user }}</div>
-        </div>
-        <div class="row pb-4">
-            <div class="col-4 col-sm-3 col-md-2" style="font-weight: bold;">Jurusan</div>
-            <div class="col-1" style="font-weight: bold">:</div>
-            <div class="col-7 col-sm-8 col-md-9">Teknologi Informasi</div>
-        </div>
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td style="font-weight: bold">Tanggal Pengisian</td>
+                    <td style="font-weight: bold">:</td>
+                    <td>{{ $result->formatted_created_at }}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold">Nama</td>
+                    <td style="font-weight: bold">:</td>
+                    <td>{{ $result->user->nama_lengkap }}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold">Golongan</td>
+                    <td style="font-weight: bold">:</td>
+                    <td>{{ $result->user->kelas_user }}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold">Jurusan</td>
+                    <td style="font-weight: bold">:</td>
+                    <td>Teknologi Informasi</td>
+                </tr>
+            </tbody>
+        </table>
         <h5 style="font-weight: bold">Knowledge of Metacognitif(KM)</h5>
         <div>
             <table class="table table-bordered">
