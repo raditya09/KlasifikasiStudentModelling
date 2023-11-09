@@ -25,7 +25,7 @@
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/85*100 }}%;" aria-valuenow="{{ $item->km_total }}" aria-valuemin="0" aria-valuemax="85"></div>
                             </div>
-                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} </div>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->km_total }} ({{ $item->km_class }})</div>
                             @endforeach
                         </div>
                     </div>
@@ -41,13 +41,13 @@
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: {{ $item->km_total/175*100 }}%;" aria-valuenow="{{ $item->rm_total }}" aria-valuemin="0" aria-valuemax="175"></div>
                             </div>
-                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }}</div>
+                            <div class="pt-1 d-flex justify-content-between"><span>Nilai anda</span> {{ $item->rm_total }} ({{ $item->rm_class }})</div>
                             @endforeach
                         </div>
                     </div>
                 </div><!-- End Hasil Nilai Kuesioner RM -->
 
-                <!-- Komponen 3: Rangkuman -->
+                {{-- <!-- Komponen 3: Rangkuman -->
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card">
                         <div class="card-body">
@@ -61,7 +61,7 @@
                             </ul>  
                         </div>
                     </div>
-                </div><!-- End Rangkuman -->
+                </div><!-- End Rangkuman --> --}}
 
                 <!-- Komponen 4: Histori Pengisian Kuesioner -->
                 <div class="col-12">
@@ -82,7 +82,7 @@
                                         <th>Periode</th>
                                         <th>KM</th>
                                         <th>RM</th>
-                                        <th>Detail Hasil</th>
+                                        <th>Detail</th>
                                     </thead>
                                     <tbody>
                                         <?php $i=1;?>
@@ -105,7 +105,7 @@
                 </div><!-- End Histori Pengisian Kuesioner -->
 
                 <!-- Komponen 5: Penjelasan KM -->
-                <div class="col-6">
+                <div class="col-sm-6 col-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan KM</h5>
@@ -120,7 +120,7 @@
                 </div><!-- End Penjelasan KM -->
 
                 <!-- Komponen 6: Penjelasan RM -->
-                <div class="col-6">
+                <div class="col-sm-6 col-12">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Penjelasan RM</h5>

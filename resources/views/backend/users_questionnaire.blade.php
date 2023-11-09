@@ -49,7 +49,7 @@
                     
                 </div>
             @endforeach
-            <div class="pt-5">
+            <div class="pt-5 text-center">
                 <button type="submit" class="btn btn-primary px-5">Submit</button>
             </div>
         </form>
