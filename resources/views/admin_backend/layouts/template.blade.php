@@ -9,8 +9,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('admin_backend/assets/img/favicon.png')}}" rel="icon">
-    <link href="{{ asset('admin_backend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{ asset('admin_backend/assets/img/logoPolije.png')}}" rel="icon">
+    <link href="{{ asset('admin_backend/assets/img/logoPolije.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -44,7 +44,7 @@
 
       <div class="d-flex align-items-center justify-content-between">
         <a href="#" class="logo d-flex align-items-center">
-          <img src="{{ asset('admin_backend/assets/img/logo.png')}}" alt="">
+          <img src="{{ asset('backend/assets/img/logoPolije.png')}}" alt="">
           <span class="d-none d-lg-block">{{config('app.name')}}</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
