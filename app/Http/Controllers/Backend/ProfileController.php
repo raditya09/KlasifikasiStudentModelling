@@ -64,6 +64,6 @@ class ProfileController extends Controller
         $user->password = \Illuminate\Support\Facades\Hash::make($request->input('new_password'));
         $user->save();
 
-        return redirect()->back()->with('success', 'Password changed successfully');
+        return redirect()->back()->with('Berhasil', 'Kata sandi telah diubah');
     }
 }

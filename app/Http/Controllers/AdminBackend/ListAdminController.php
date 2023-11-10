@@ -28,7 +28,7 @@ class ListAdminController extends Controller
     {
         return Validator::make($data, [
             'nama_lengkap' => ['required', 'string', 'max:255'],
-            'nim' => ['required', 'string', 'max:20'],
+            'nip' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -45,10 +45,10 @@ class ListAdminController extends Controller
     {
         User::create([
             'nama_lengkap' =>$request->nama_lengkap,
-            'nim' => $request->nim,
+            'nip' => $request->nip,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'foto' => 'images/2xUcdtkygOf0aM2EvXuKFLXLOBlEuXNPT21Oeo15.png',
+            'foto' => 'images/BoeaT0jCWccM0FW9FxE1HS1ej5J61n99JbEBzWlS.jpg',
             'kelas_user' => '2'
         ]);
         return redirect()->route('adminListAdmin.index')->with('success', 'Admin baru berhasil dibuat');
@@ -57,11 +57,11 @@ class ListAdminController extends Controller
     public function update(Request $request, $id)
     {
         $nama_lengkap = $request->nama_lengkap;
-        $nim = $request->nim;
+        $nip = $request->nip;
         $email = $request->email;
         $user = User::findOrFail($id);
         $user->nama_lengkap = $nama_lengkap;
-        $user->nim = $nim;
+        $user->nip = $nip;
         $user->email = $email;
         $user->update();
         return redirect()->route('adminListAdmin.index')->with('success', 'Admin tersebut telah diubah');
