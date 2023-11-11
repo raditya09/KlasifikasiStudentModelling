@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Validator;
 class ListAdminController extends Controller
 {
     //
-     public function index()
-     {
-         $users = User::all()->whereIn('kelas_user', ['1','2']);
-         return view('admin_backend.admin_listadmin', compact('users'));
-     }
-        /**
+    public function index()
+    {
+        $users = User::all()->whereIn('kelas_user', ['1', '2']);
+        return view('admin_backend.admin_listadmin', compact('users'));
+    }
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -44,12 +44,14 @@ class ListAdminController extends Controller
     public function store(Request $request)
     {
         User::create([
-            'nama_lengkap' =>$request->nama_lengkap,
-            'nip' => $request->nip,
+            'nama_lengkap' => $request->nama_lengkap,
+            'nim' => $request->nim,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'foto' => 'images/BoeaT0jCWccM0FW9FxE1HS1ej5J61n99JbEBzWlS.jpg',
-            'kelas_user' => '2'
+            'kelas_user' => '2',
+            'semester' => '0',
+            'angkatan' => '2000'
         ]);
         return redirect()->route('adminListAdmin.index')->with('success', 'Admin baru berhasil dibuat');
     }
@@ -57,11 +59,11 @@ class ListAdminController extends Controller
     public function update(Request $request, $id)
     {
         $nama_lengkap = $request->nama_lengkap;
-        $nip = $request->nip;
+        $nip = $request->nim;
         $email = $request->email;
         $user = User::findOrFail($id);
         $user->nama_lengkap = $nama_lengkap;
-        $user->nip = $nip;
+        $user->nim = $nip;
         $user->email = $email;
         $user->update();
         return redirect()->route('adminListAdmin.index')->with('success', 'Admin tersebut telah diubah');
