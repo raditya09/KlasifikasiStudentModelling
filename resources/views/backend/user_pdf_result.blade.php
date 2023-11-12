@@ -37,9 +37,9 @@
                     <td>{{ $result->user->nama_lengkap }}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold">Golongan</td>
+                    <td style="font-weight: bold">NIM</td>
                     <td style="font-weight: bold">:</td>
-                    <td>{{ $result->user->kelas_user }}</td>
+                    <td>{{ $result->user->nim }}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold">Jurusan</td>
